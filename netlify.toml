@@ -3,4 +3,11 @@
   publish = ".next"
 
 [[plugins]]
-  package = "@netlify/plugin-nextjs" 
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NETLIFY_USE_YARN_CACHE = "false"
+  NETLIFY_USE_NPM_CACHE = "false"
+
+[build.processing]
+  skip_processing = true 
