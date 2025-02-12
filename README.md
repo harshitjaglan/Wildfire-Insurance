@@ -1,6 +1,6 @@
 # Wildfire Insurance Claim App SWE Design Doc
 
-**Author:** Sudomarith | [instagram.com/zero2sudo](https://instagram.com/zero2sudo)
+
 
 ## Problem Context
 
