@@ -196,6 +196,24 @@ export default async function DashboardPage() {
                   </div>
                 </div>
 
+                <Link
+                    href="/collaboration"
+                    className="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow flex items-center space-x-4"
+                  >
+                    <div className="bg-red-100 p-3 rounded-full">
+                      <FaUsers className="text-2xl text-red-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-1">
+                        Collaboration
+                      </h3>
+                      <p className="text-gray-600">
+                        Invite others to help with your claim
+                      </p>
+                    </div>
+                </Link>
+                
+
                 {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Link
                     href="/documentation"

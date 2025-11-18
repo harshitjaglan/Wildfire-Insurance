@@ -6,22 +6,25 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String    @unique
-  emailVerified DateTime?
-  image         String?
-  rooms         Room[]
-  items         Item[]
-  accounts      Account[]
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id               String             @id @default(cuid())
+  name             String?
+  email            String             @unique
+  emailVerified    DateTime?
+  image            String?
+  rooms            Room[]
+  items            Item[]
+  accounts         Account[]
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  Claim            Claim[]
+  ClaimParticipant ClaimParticipant[]
+  ClaimComment     ClaimComment[]
 }
 
 model Room {
@@ -35,19 +38,20 @@ model Room {
 }
 
 model Item {
-  id           String   @id @default(cuid())
+  id           String      @id @default(cuid())
   name         String
   description  String?
   value        Float
-  brand        String?  // Added brand
-  modelNumber  String?  // Added model number
-  serialNumber String?  // Added serial number
-  room         Room     @relation(fields: [roomId], references: [id])
+  brand        String? // Added brand
+  modelNumber  String? // Added model number
+  serialNumber String? // Added serial number
+  room         Room        @relation(fields: [roomId], references: [id])
   roomId       String
-  user         User     @relation(fields: [userId], references: [id])
+  user         User        @relation(fields: [userId], references: [id])
   userId       String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  ClaimItem    ClaimItem[]
 }
 
 model Account {
@@ -67,4 +71,65 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+}
+
+model Claim {
+  id           String      @id @default(cuid())
+  title        String
+  description  String?
+  incidentDate DateTime
+  status       ClaimStatus @default(DRAFT)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  // relations
+  createdBy    User               @relation(fields: [createdById], references: [id])
+  createdById  String
+  participants ClaimParticipant[]
+  items        ClaimItem[]
+  comments     ClaimComment[]
+}
+
+enum ClaimStatus {
+  DRAFT
+  GATHERING_EVIDENCE
+  SUBMITTED
+  APPROVED
+  REJECTED
+}
+
+model ClaimParticipant {
+  id      String @id @default(cuid())
+  role    Role   @default(COLLABORATOR)
+  user    User   @relation(fields: [userId], references: [id])
+  userId  String
+  claim   Claim  @relation(fields: [claimId], references: [id])
+  claimId String
+
+  @@unique([userId, claimId])
+}
+
+enum Role {
+  OWNER
+  COLLABORATOR
+}
+
+model ClaimItem {
+  id      String @id @default(cuid())
+  claim   Claim  @relation(fields: [claimId], references: [id])
+  claimId String
+  item    Item   @relation(fields: [itemId], references: [id])
+  itemId  String
+
+  @@unique([claimId, itemId])
+}
+
+model ClaimComment {
+  id        String   @id @default(cuid())
+  body      String
+  createdAt DateTime @default(now())
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+  claim     Claim    @relation(fields: [claimId], references: [id])
+  claimId   String
 }
