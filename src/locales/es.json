@@ -1,0 +1,262 @@
+{
+     "dashboard": {
+          "headers": {
+               "welcome": "Bienvenido, ",
+               "start": "Comencemos tu reclamo por incendio forestal",
+               "room": "Habitaciones",
+               "item": "Artículos",
+               "collaboration": "Colaboración",
+               "totalRoom": "Total de Habitaciones",
+               "totalItem": "Total de Artículos",
+               "totalValue": "Valor Total"
+          },
+          "paragraphs": {
+               "start": "Comienza agregando habitaciones a tu inventario. Esto ayudará a \norganizar tus pertenencias y agilizar el proceso de reclamo.",
+               "manage": "Administra y agrega habitaciones a tu inventario",
+               "invite": "Invita a otros a ayudarte con tu reclamo"
+          },
+          "link": {
+               "edit": "Editar Perfil",
+               "firstRoom": "Agrega tu Primera Habitación"
+          }
+     },
+
+     "collaboration": {
+          "headers": {
+               "claim": "Colabora en Reclamos",
+               "newClaim": "Crear un nuevo reclamo",
+               "yourClaims": "Tus reclamos colaborativos",
+               "participants": "Participantes"
+          },
+          "paragraphs": {
+               "claim": "Crea un reclamo, invita colaboradores, adjunta artículos y realiza un seguimiento del estado.",
+               "noClaims": "Aún no hay reclamos. Crea uno arriba e invita a otros para ayudar."
+          },
+          "div": {
+               "incidentDate": "Incidente el ",
+               "value": "Valor: $",
+               "totalValue": "Valor Total: $",
+               "discussion": "Discusión"
+          },
+          "link": {},
+          "buttons": {
+               "createClaim": "Crear Reclamo",
+               "update": "Actualizar",
+               "invite": "Invitar",
+               "post": "Publicar"
+          },
+          "form": {
+               "title": "Título",
+               "incident": "Fecha del incidente",
+               "invite": "Invitar colaboradores (correos electrónicos, separados por comas)",
+               "description": "Descripción",
+               "select": "Selecciona los artículos a incluir",
+               "noItems": "No hay artículos en esta habitación."
+          },
+          "options": {
+               "draft": "Borrador",
+               "evidence": "Recolección de Evidencia",
+               "submitted": "Enviado",
+               "approved": "Aprobado",
+               "rejected": "Rechazado"
+          }
+     },
+
+     "itemsClient": {
+          "div": {
+               "totalValue": "Valor Total: $"
+          },
+          "buttons": {
+               "generate": "Generar PDF"
+          },
+          "link": {
+               "addBrand": "+ Agregar marca",
+               "addModel": "+ Agregar número de modelo",
+               "addSerial": "+ Agregar número de serie"
+          }
+     },
+
+     "privacy": {
+          "headers": {
+               "privacy": "Política de Privacidad",
+               "data": "Protección de Datos",
+               "auth": "Autenticación"
+          },
+          "paragraphs": {
+               "p1": "• Los datos de tu inventario están cifrados en reposo usando cifrado estándar de la industria",
+               "p2": "• Todas las transferencias de datos están aseguradas con cifrado SSL/TLS",
+               "p3": "• Nunca compartimos tu información personal con terceros",
+               "p4": "• Puedes solicitar la eliminación de tus datos en cualquier momento",
+               "p5": "Usamos Google OAuth 2.0 para una autenticación segura, lo que significa:",
+               "p6": "• Nunca vemos ni almacenamos tu contraseña",
+               "p7": "• La autenticación de dos factores es compatible",
+               "p8": "• Puedes revocar el acceso en cualquier momento desde tu cuenta de Google"
+          }
+     },
+
+     "profile": {
+          "headers": {
+               "settings": "Configuración de Perfil",
+               "picture": "Foto de Perfil",
+               "danger": "Zona de Peligro"
+          },
+          "handlers": {
+               "updatePfp1": "No se pudo actualizar el perfil",
+               "updatePfp2": "No se pudo actualizar el perfil. Por favor, inténtalo de nuevo.",
+               "deleteConfirm": "¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.",
+               "deleteFail1": "No se pudo eliminar la cuenta",
+               "error": "Error: ",
+               "deleteFail2": "No se pudo eliminar la cuenta. Por favor, inténtalo de nuevo."
+          },
+          "paragraphs": {
+               "success": "¡Perfil actualizado con éxito! Por favor, \ncierra sesión y vuelve a iniciar para ver los \ncambios.",
+               "update": "Actualiza tu foto a través de tu cuenta de Google",
+               "delete": "Una vez elimines tu cuenta, no hay vuelta atrás.\nPor favor, asegúrate."
+          },
+          "form": {
+               "display": "Nombre para Mostrar",
+               "email": "Dirección de Correo",
+               "save": "Guardar Cambios"
+          },
+          "buttons": {
+               "delete": "Eliminar Cuenta"
+          }
+     },
+
+     "roomsClient": {
+          "headers": {
+               "rooms": "Tus Habitaciones",
+               "items": "Artículos "
+          },
+          "handlers": {
+               "roomFail1": "No se pudo crear la habitación",
+               "roomFail2": "No se pudo crear la habitación. Por favor, inténtalo de nuevo."
+          },
+          "paragraphs": {
+               "room": "Aún no hay habitaciones",
+               "add": "¡Agrega tu primera habitación para comenzar!",
+               "no": "No hay artículos en esta habitación",
+               "more": " más artículos"
+          },
+          "form": {
+               "name": "Nombre de la Habitación",
+               "cancel": "Cancelar",
+               "create": "Crear Habitación"
+          },
+          "buttons": {
+               "room": "Agregar Nueva Habitación",
+               "add": "Agrega tu Primera Habitación"
+          }
+     },
+
+     "roomIdClient": {
+          "headers": {
+               "add": "Agregar Nuevo Artículo"
+          },
+          "handlers": {
+               "update": "No se pudo actualizar el nombre de la habitación: ",
+               "negative": "Por favor, ingresa un valor válido no negativo.",
+               "network": "La respuesta de la red no fue correcta",
+               "add": "No se pudo agregar el artículo. Por favor, inténtalo de nuevo.",
+               "delete1": "No se pudo eliminar",
+               "delete2": "Error al eliminar: ",
+               "delete3": "No se pudo eliminar el artículo. Por favor, inténtalo de nuevo."
+          },
+          "link": {
+               "back": "← Volver a Habitaciones",
+               "edit": "Editar"
+          },
+          "buttons": {
+               "save": "Guardar",
+               "cancel": "Cancelar",
+               "edit": "✏️",
+               "add": "Agregar Artículo",
+               "delete": "Eliminar"
+          }
+     },
+
+     "signInButton": {
+          "buttons": {
+               "in": "Iniciar Sesión",
+               "out": "Cerrar Sesión"
+          },
+          "paragraphs": {
+               "welcome": "Bienvenido, "
+          }
+     },
+
+     "inventoryButton": {
+          "buttons": {
+               "download": "Descargar Inventario en PDF"
+          }
+     },
+
+     "footer": {
+          "headers": {
+               "security": "Seguridad",
+               "privacy": "Política de Privacidad",
+               "trust": "Confianza y Seguridad"
+          }
+     },
+
+     "formHelper": {
+          "text": {
+               "brand": "Especificar la marca ayuda a garantizar un reemplazo de calidad similar",
+               "serial": "Importante para electrónicos y artículos de alto valor",
+               "price": "Ayuda a establecer el valor del artículo para reclamos de seguro",
+               "description": "Incluye características específicas, materiales y condición",
+               "photos": "Prueba visual de propiedad y condición"
+          }
+     },
+
+     "navigation": {
+          "link": {
+               "home": "Inventario del Hogar",
+               "dashboard": "Tablero",
+               "room": "Habitaciones",
+               "items": "Todos los Artículos",
+               "collab": "Colaboración"
+          },
+          "buttons": {
+               "signOut": "Cerrar Sesión"
+          }
+     },
+
+     "roomCard": {
+          "buttons": {
+               "save": "Guardar",
+               "delete": "Eliminar",
+               "edit": "Editar"
+          },
+          "link": {
+               "view": "Ver Artículos"
+          }
+     },
+
+     "app": {
+          "headers": {
+               "title": "Asistente de Reclamos por Incendios Forestales",
+               "streamline": "Optimiza tu Proceso de Reclamo",
+               "how": "Cómo Funciona"
+          },
+          "paragraphs": {
+               "description": "Simplifica tu proceso de reclamo de seguro con nuestro\nsistema inteligente de gestión de inventario del hogar."
+          },
+          "title": {
+               "organize": "Organiza por Habitación",
+               "detail": "Registros Detallados de Artículos",
+               "generate1": "Generar Reportes",
+               "sign": "Regístrate",
+               "add": "Agregar Inventario",
+               "generate2": "Generar Reporte"
+          },
+          "description": {
+               "sort": "Ordena y clasifica tus artículos por habitación, asegurando que nada se pase por alto en tu reclamo.",
+               "add": "Agrega detalles completos a cada artículo, fortaleciendo tu reclamo de seguro con información precisa.",
+               "create": "Crea reportes PDF profesionales de tu inventario, con valores de artículos para fácil presentación.",
+               "account": "Crea tu cuenta y configura tu perfil.",
+               "addRooms": "Agrega habitaciones y artículos fácilmente con nuestro proceso guiado.",
+               "report": "Crea un reporte PDF completo para tu reclamo de seguro."
+          }
+     }
+}

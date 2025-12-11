@@ -1,0 +1,262 @@
+{
+     "dashboard": {
+          "headers": {
+               "welcome": "欢迎，",
+               "start": "开始您的野火保险理赔流程",
+               "room": "房间",
+               "item": "物品",
+               "collaboration": "协作",
+               "totalRoom": "房间总数",
+               "totalItem": "物品总数",
+               "totalValue": "总价值"
+          },
+          "paragraphs": {
+               "start": "首先将房间添加到您的清单中。这将帮助\n整理您的物品并简化理赔流程。",
+               "manage": "管理并添加房间到您的物品清单",
+               "invite": "邀请他人协助您的理赔"
+          },
+          "link": {
+               "edit": "编辑个人资料",
+               "firstRoom": "添加您的第一个房间"
+          }
+     },
+
+     "collaboration": {
+          "headers": {
+               "claim": "协作处理理赔",
+               "newClaim": "创建新理赔",
+               "yourClaims": "您的协作理赔",
+               "participants": "参与者"
+          },
+          "paragraphs": {
+               "claim": "创建理赔、邀请协作者、附加物品并追踪状态。",
+               "noClaims": "尚无理赔。请在上方创建并邀请他人协助。"
+          },
+          "div": {
+               "incidentDate": "发生于 ",
+               "value": "价值：$",
+               "totalValue": "总价值：$",
+               "discussion": "讨论"
+          },
+          "link": {},
+          "buttons": {
+               "createClaim": "创建理赔",
+               "update": "更新",
+               "invite": "邀请",
+               "post": "发布"
+          },
+          "form": {
+               "title": "标题",
+               "incident": "事件日期",
+               "invite": "邀请协作者（邮箱，逗号分隔）",
+               "description": "描述",
+               "select": "选择要包含的物品",
+               "noItems": "此房间中没有物品。"
+          },
+          "options": {
+               "draft": "草稿",
+               "evidence": "收集证据",
+               "submitted": "已提交",
+               "approved": "已批准",
+               "rejected": "已拒绝"
+          }
+     },
+
+     "itemsClient": {
+          "div": {
+               "totalValue": "总价值：$"
+          },
+          "buttons": {
+               "generate": "生成 PDF"
+          },
+          "link": {
+               "addBrand": "+ 添加品牌",
+               "addModel": "+ 添加型号",
+               "addSerial": "+ 添加序列号"
+          }
+     },
+
+     "privacy": {
+          "headers": {
+               "privacy": "隐私政策",
+               "data": "数据保护",
+               "auth": "身份验证"
+          },
+          "paragraphs": {
+               "p1": "• 您的物品清单数据在静止状态下使用行业标准加密进行保护",
+               "p2": "• 所有数据传输均使用 SSL/TLS 加密保护",
+               "p3": "• 我们不会与任何第三方共享您的个人信息",
+               "p4": "• 您可以随时请求删除您的数据",
+               "p5": "我们使用 Google OAuth 2.0 进行安全验证，这意味着：",
+               "p6": "• 我们从不查看或存储您的密码",
+               "p7": "• 支持双重身份验证",
+               "p8": "• 您可以随时通过 Google 帐号撤销访问权限"
+          }
+     },
+
+     "profile": {
+          "headers": {
+               "settings": "个人资料设置",
+               "picture": "个人头像",
+               "danger": "危险区域"
+          },
+          "handlers": {
+               "updatePfp1": "更新个人资料失败",
+               "updatePfp2": "更新个人资料失败。请再试一次。",
+               "deleteConfirm": "您确定要删除您的帐号吗？此操作无法撤销。",
+               "deleteFail1": "删除帐号失败",
+               "error": "错误：",
+               "deleteFail2": "删除帐号失败。请再试一次。"
+          },
+          "paragraphs": {
+               "success": "个人资料更新成功！请\n登出并重新登入以查看\n更改。",
+               "update": "请通过您的 Google 帐号更新头像",
+               "delete": "一旦删除您的帐号，将无法恢复。\n请谨慎操作。"
+          },
+          "form": {
+               "display": "显示名称",
+               "email": "电子邮箱地址",
+               "save": "保存更改"
+          },
+          "buttons": {
+               "delete": "删除帐号"
+          }
+     },
+
+     "roomsClient": {
+          "headers": {
+               "rooms": "您的房间",
+               "items": "物品 "
+          },
+          "handlers": {
+               "roomFail1": "创建房间失败",
+               "roomFail2": "创建房间失败。请再试一次。"
+          },
+          "paragraphs": {
+               "room": "尚无房间",
+               "add": "添加您的第一个房间以开始！",
+               "no": "此房间没有物品",
+               "more": " 更多物品"
+          },
+          "form": {
+               "name": "房间名称",
+               "cancel": "取消",
+               "create": "创建房间"
+          },
+          "buttons": {
+               "room": "添加新房间",
+               "add": "添加您的第一个房间"
+          }
+     },
+
+     "roomIdClient": {
+          "headers": {
+               "add": "添加新物品"
+          },
+          "handlers": {
+               "update": "更新房间名称失败：",
+               "negative": "请输入有效的非负数值。",
+               "network": "网络响应不正常",
+               "add": "添加物品失败。请再试一次。",
+               "delete1": "删除失败",
+               "delete2": "删除错误：",
+               "delete3": "删除物品失败。请再试一次。"
+          },
+          "link": {
+               "back": "← 返回房间",
+               "edit": "编辑"
+          },
+          "buttons": {
+               "save": "保存",
+               "cancel": "取消",
+               "edit": "✏️",
+               "add": "添加物品",
+               "delete": "删除"
+          }
+     },
+
+     "signInButton": {
+          "buttons": {
+               "in": "登录",
+               "out": "登出"
+          },
+          "paragraphs": {
+               "welcome": "欢迎，"
+          }
+     },
+
+     "inventoryButton": {
+          "buttons": {
+               "download": "下载库存 PDF"
+          }
+     },
+
+     "footer": {
+          "headers": {
+               "security": "安全",
+               "privacy": "隐私政策",
+               "trust": "信任与安全"
+          }
+     },
+
+     "formHelper": {
+          "text": {
+               "brand": "指定品牌名称有助于确保同品质替换",
+               "serial": "对电子产品和高价值物品尤为重要",
+               "price": "有助于确定物品价值以用于保险理赔",
+               "description": "请包含具体特征、材质和状况",
+               "photos": "用于证明物品所有权和状况的视觉证据"
+          }
+     },
+
+     "navigation": {
+          "link": {
+               "home": "家庭物品清单",
+               "dashboard": "控制面板",
+               "room": "房间",
+               "items": "所有物品",
+               "collab": "协作"
+          },
+          "buttons": {
+               "signOut": "登出"
+          }
+     },
+
+     "roomCard": {
+          "buttons": {
+               "save": "保存",
+               "delete": "删除",
+               "edit": "编辑"
+          },
+          "link": {
+               "view": "查看物品"
+          }
+     },
+
+     "app": {
+          "headers": {
+               "title": "野火保险理赔助手",
+               "streamline": "简化您的理赔流程",
+               "how": "使用方式"
+          },
+          "paragraphs": {
+               "description": "使用我们的智能家庭物品管理系统，简化您的保险理赔流程。"
+          },
+          "title": {
+               "organize": "按房间分类",
+               "detail": "详细的物品记录",
+               "generate1": "生成报告",
+               "sign": "注册",
+               "add": "添加物品清单",
+               "generate2": "生成报告"
+          },
+          "description": {
+               "sort": "按房间整理和分类您的物品，确保理赔时不遗漏任何物品。",
+               "add": "为每件物品添加详细信息，使您的保险理赔更为充分。",
+               "create": "生成专业的 PDF 清单，包含物品价值，便于提交保险公司。",
+               "account": "创建您的账户并设置个人资料。",
+               "addRooms": "通过我们的引导流程轻松添加房间和物品。",
+               "report": "为您的保险理赔生成完整的 PDF 报告。"
+          }
+     }
+}
