@@ -1,17 +1,79 @@
 {
-    "headers": {
-        "claim": "Collaborate on Claims"
-    },
-    "paragraphs": {
-        "claim": "Create a claim, invite collaborators, attach items, and track status."
-    },
-    "buttons": {
-        "back": "Back to dashboard"
-    },
-    "classname": {
-        "incident": "Incident date",
-        "invite": "Invite collaborators (emails, comma separated)",
-        "description": "Description",
-        "select": "Select items to include"
-    }
+     "dashboard": {
+          "headers": {
+               "welcome": "Welcome, ",
+               "start": "Let's Start Your Wildfire Insurance Claim",
+               "room": "Rooms",
+               "item": "Items",
+               "collaboration": "Collaboration",
+               "totalRoom": "Total Rooms",
+               "totalItem": "Total Items",
+               "totalValue": "Total Value"
+          },
+          "paragraphs": {
+               "start": "Begin by adding rooms to your inventory. This will help \n organize your belongings and streamline the claim process.",
+               "manage": "Manage and add rooms to your inventory",
+               "invite": "Invite others to help with your claim"
+          },
+          "link": {
+               "edit": "Edit Profile",
+               "firstRoom": "Add Your First Room"
+          }
+     },
+
+     "collaboration": {
+          "headers": {
+               "claim": "Collaborate on Claims",
+               "newClaim": "Create a new claim",
+               "yourClaims": "Your collaborative claims",
+               "participants": "Participants"
+          },
+          "paragraphs": {
+               "claim": "Create a claim, invite collaborators, attach items, and track status.",
+               "noClaims": "No claims yet. Create one above and invite others to help."
+          },
+          "div": {
+               "incidentDate": "Incident on ",
+               "value": "Value: $",
+               "totalValue": "Total Value: $",
+               "discussion": "Discussion"
+          },
+          "link": {},
+          "buttons": {
+               "createClaim": "Create Claim",
+               "update": "Update",
+               "invite": "Invite",
+               "post": "Post"
+          },
+          "form": {
+               "title": "Title",
+               "incident": "Incident date",
+               "invite": "Invite collaborators (emails, comma separated)",
+               "description": "Description",
+               "select": "Select items to include",
+               "noItems": "No items in this room."
+          },
+          "options": {
+               "draft": "Draft",
+               "evidence": "Gathering Evidence",
+               "submitted": "Submitted",
+               "approved": "Approved",
+               "rejected": "Rejected"
+          }
+     },
+
+     "itemsClient": {
+          "headers": {},
+          "div": {
+               "totalValue": "Total Value: $"
+          },
+          "buttons": {
+               "generate": "Generate PDF"
+          },
+          "link": {
+               "addBrand": "+ Add brand",
+               "addModel": "+ Add model number",
+               "addSerial": "+ Add serial number"
+          }
+     }
 }

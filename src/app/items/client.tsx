@@ -57,18 +57,18 @@ export function AllItemsClient({ items }: { items: Item[] }) {
                <div className="px-4 py-6 sm:px-0">
                     <div className="flex justify-between items-center mb-6">
                          <h1 className="text-2xl font-semibold">
-                              {t("headers.allItems")}
+                              {t("itemsClient.headers.allItems")}
                          </h1>
                          <div className="flex items-center gap-4">
                               <div className="text-lg font-medium">
-                                   {t("div.totalValue")}{" "}
+                                   {t("itemsClient.div.totalValue")}{" "}
                                    {totalValue.toLocaleString()}
                               </div>
                               <button
                                    onClick={handleGeneratePDF}
                                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                               >
-                                   {t("buttons.generate")}
+                                   {t("itemsClient.buttons.generate")}
                               </button>
                          </div>
                     </div>
@@ -113,7 +113,9 @@ export function AllItemsClient({ items }: { items: Item[] }) {
                                                        href={`/items/${item.id}`}
                                                        className="text-gray-400 hover:text-blue-600 block"
                                                   >
-                                                       {t("link.addBrand")}
+                                                       {t(
+                                                            "itemsClient.link.addBrand"
+                                                       )}
                                                   </Link>
                                              )}
                                              {!item.modelNumber && (
@@ -121,7 +123,9 @@ export function AllItemsClient({ items }: { items: Item[] }) {
                                                        href={`/items/${item.id}`}
                                                        className="text-gray-400 hover:text-blue-600 block"
                                                   >
-                                                       {t("link.addModel")}
+                                                       {t(
+                                                            "itemsClient.link.addModel"
+                                                       )}
                                                   </Link>
                                              )}
                                              {!item.serialNumber && (
@@ -129,7 +133,9 @@ export function AllItemsClient({ items }: { items: Item[] }) {
                                                        href={`/items/${item.id}`}
                                                        className="text-gray-400 hover:text-blue-600 block"
                                                   >
-                                                       {t("link.addSerial")}
+                                                       {t(
+                                                            "itemsClient.link.addSerial"
+                                                       )}
                                                   </Link>
                                              )}
                                         </div>

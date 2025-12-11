@@ -96,7 +96,9 @@ export default async function DashboardPage() {
                                              )}
                                              <div>
                                                   <h2 className="text-2xl font-bold text-gray-900">
-                                                       {t("headers.welcome")}{" "}
+                                                       {t(
+                                                            "dashboard.headers.welcome"
+                                                       )}{" "}
                                                        {session.user.name}!
                                                   </h2>
                                                   <p className="text-indigo-600">
@@ -108,7 +110,7 @@ export default async function DashboardPage() {
                                              href="/profile"
                                              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
                                         >
-                                             {t("link.edit")}
+                                             {t("dashboard.link.edit")}
                                         </Link>
                                    </div>
                               </div>
@@ -117,17 +119,17 @@ export default async function DashboardPage() {
                                    // Empty state
                                    <div className="text-center py-12 bg-white shadow-lg rounded-2xl p-8">
                                         <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                                             {t("headers.start")}
+                                             {t("dashboard.headers.start")}
                                         </h3>
                                         <p className="whitespace-pre-line text-gray-600 mb-8 max-w-2xl mx-auto">
-                                             {t("paragraphs.start")}
+                                             {t("dashboard.paragraphs.start")}
                                         </p>
                                         <Link
                                              href="/rooms/new"
                                              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition-colors"
                                         >
                                              <FaHome className="mr-2" />{" "}
-                                             {t("link.firstHome")}
+                                             {t("dashboard.link.firstHome")}
                                         </Link>
                                    </div>
                               ) : (
@@ -143,11 +145,13 @@ export default async function DashboardPage() {
                                                   </div>
                                                   <div>
                                                        <h3 className="text-xl font-bold text-gray-900 mb-1">
-                                                            {t("headers.room")}
+                                                            {t(
+                                                                 "dashboard.headers.room"
+                                                            )}
                                                        </h3>
                                                        <p className="text-gray-600">
                                                             {t(
-                                                                 "paragraphs.manage"
+                                                                 "dashboard.paragraphs.manage"
                                                             )}
                                                        </p>
                                                   </div>
@@ -162,11 +166,13 @@ export default async function DashboardPage() {
                                                   </div>
                                                   <div>
                                                        <h3 className="text-xl font-bold text-gray-900 mb-1">
-                                                            {t("headers.item")}
+                                                            {t(
+                                                                 "dashboard.headers.item"
+                                                            )}
                                                        </h3>
                                                        <p className="text-gray-600">
                                                             {t(
-                                                                 "paragraphs.manage"
+                                                                 "dashboard.paragraphs.manage"
                                                             )}
                                                        </p>
                                                   </div>
@@ -182,12 +188,12 @@ export default async function DashboardPage() {
                                                   <div>
                                                        <h3 className="text-xl font-bold text-gray-900 mb-1">
                                                             {t(
-                                                                 "headers.collaboration"
+                                                                 "dashboard.headers.collaboration"
                                                             )}
                                                        </h3>
                                                        <p className="text-gray-600">
                                                             {t(
-                                                                 "paragraphs.invite"
+                                                                 "dashboard.paragraphs.invite"
                                                             )}
                                                        </p>
                                                   </div>
@@ -199,7 +205,7 @@ export default async function DashboardPage() {
                                                   <div className="flex items-center justify-between mb-4">
                                                        <h3 className="text-lg font-bold text-gray-900">
                                                             {t(
-                                                                 "headers.totalRooms"
+                                                                 "dashboard.headers.totalRooms"
                                                             )}
                                                        </h3>
                                                        <FaHome className="text-2xl text-indigo-600" />
@@ -212,7 +218,7 @@ export default async function DashboardPage() {
                                                   <div className="flex items-center justify-between mb-4">
                                                        <h3 className="text-lg font-bold text-gray-900">
                                                             {t(
-                                                                 "headers.totalItems"
+                                                                 "dashboard.headers.totalItems"
                                                             )}
                                                        </h3>
                                                        <FaBoxOpen className="text-2xl text-green-600" />
@@ -225,7 +231,7 @@ export default async function DashboardPage() {
                                                   <div className="flex items-center justify-between mb-4">
                                                        <h3 className="text-lg font-bold text-gray-900">
                                                             {t(
-                                                                 "headers.totalValue"
+                                                                 "dashboard.headers.totalValue"
                                                             )}
                                                        </h3>
                                                        <FaChartLine className="text-2xl text-purple-600" />

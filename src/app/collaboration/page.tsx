@@ -176,21 +176,21 @@ export default async function CollaborationPage() {
                <div className="flex items-center justify-between">
                     <div>
                          <h1 className="text-2xl font-semibold">
-                              {t("headers.claim")}
+                              {t("collaboration.headers.claim")}
                          </h1>
                          <p className="text-sm text-muted-foreground">
-                              {t("paragraphs.claim")}
+                              {t("collaboration.paragraphs.claim")}
                          </p>
                     </div>
                     <Link href="/" className="text-sm underline">
-                         {t("link.back")}
+                         {t("collaboration.link.back")}
                     </Link>
                </div>
 
                {/* Create claim */}
                <div className="rounded-2xl border bg-white/70 backdrop-blur p-5 shadow-sm">
                     <h2 className="text-lg font-medium mb-3">
-                         {t("headers.newClaim")}
+                         {t("collaboration.headers.newClaim")}
                     </h2>
                     <form
                          action={createClaim}
@@ -198,7 +198,7 @@ export default async function CollaborationPage() {
                     >
                          <div className="col-span-2 grid gap-2">
                               <label className="text-sm font-medium">
-                                   {t("form.title")}
+                                   {t("collaboration.form.title")}
                               </label>
                               <input
                                    name="title"
@@ -209,7 +209,7 @@ export default async function CollaborationPage() {
                          </div>
                          <div className="grid gap-2">
                               <label className="text-sm font-medium">
-                                   {t("form.incident")}
+                                   {t("collaboration.form.incident")}
                               </label>
                               <input
                                    type="date"
@@ -220,7 +220,7 @@ export default async function CollaborationPage() {
                          </div>
                          <div className="grid gap-2">
                               <label className="text-sm font-medium">
-                                   {t("form.invite")}
+                                   {t("collaboration.form.invite")}
                               </label>
                               <input
                                    name="collaborators"
@@ -230,7 +230,7 @@ export default async function CollaborationPage() {
                          </div>
                          <div className="col-span-2 grid gap-2">
                               <label className="text-sm font-medium">
-                                   {t("form.description")}
+                                   {t("collaboration.form.description")}
                               </label>
                               <textarea
                                    name="description"
@@ -242,7 +242,7 @@ export default async function CollaborationPage() {
 
                          <div className="col-span-2 grid gap-3">
                               <label className="text-sm font-medium">
-                                   {t("form.select")}
+                                   {t("collaboration.form.select")}
                               </label>
                               <div className="grid gap-3 md:grid-cols-2">
                                    {user.rooms.map((r) => (
@@ -256,7 +256,9 @@ export default async function CollaborationPage() {
                                              <div className="grid gap-2">
                                                   {r.items.length === 0 && (
                                                        <p className="text-sm text-muted-foreground">
-                                                            {t("form.noItems")}
+                                                            {t(
+                                                                 "collaboration.form.noItems"
+                                                            )}
                                                        </p>
                                                   )}
                                                   {r.items.map((it) => (
@@ -290,7 +292,7 @@ export default async function CollaborationPage() {
 
                          <div className="col-span-2 flex justify-end">
                               <button className="rounded-2xl bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700">
-                                   {t("buttons.createClaim")}
+                                   {t("collaboration.buttons.createClaim")}
                               </button>
                          </div>
                     </form>
@@ -299,11 +301,11 @@ export default async function CollaborationPage() {
                {/* Existing claims list */}
                <div className="space-y-4">
                     <h2 className="text-lg font-medium">
-                         {t("headers.yourClaims")}
+                         {t("collaboration.headers.yourClaims")}
                     </h2>
                     {claims.length === 0 && (
                          <p className="text-sm text-muted-foreground">
-                              {t("paragraphs.noClaims")}
+                              {t("collaboration.paragraphs.noClaims")}
                          </p>
                     )}
                     <div className="grid gap-4">
@@ -318,7 +320,9 @@ export default async function CollaborationPage() {
                                                   {c.title}
                                              </h3>
                                              <p className="text-xs text-muted-foreground">
-                                                  {t("div.incidentDate")}{" "}
+                                                  {t(
+                                                       "collaboration.div.incidentDate"
+                                                  )}{" "}
                                                   {new Date(
                                                        c.incidentDate
                                                   ).toLocaleDateString()}
@@ -339,23 +343,35 @@ export default async function CollaborationPage() {
                                                   className="rounded-xl border px-3 py-2 text-sm"
                                              >
                                                   <option value="DRAFT">
-                                                       {t("options.draft")}
+                                                       {t(
+                                                            "collaboration.options.draft"
+                                                       )}
                                                   </option>
                                                   <option value="GATHERING_EVIDENCE">
-                                                       {t("options.evidence")}
+                                                       {t(
+                                                            "collaboration.options.evidence"
+                                                       )}
                                                   </option>
                                                   <option value="SUBMITTED">
-                                                       {t("options.submitted")}
+                                                       {t(
+                                                            "collaboration.options.submitted"
+                                                       )}
                                                   </option>
                                                   <option value="APPROVED">
-                                                       {t("options.approved")}
+                                                       {t(
+                                                            "collaboration.options.approved"
+                                                       )}
                                                   </option>
                                                   <option value="REJECTED">
-                                                       {t("options.rejected")}
+                                                       {t(
+                                                            "collaboration.options.rejected"
+                                                       )}
                                                   </option>
                                              </select>
                                              <button className="rounded-xl border px-3 py-2 text-sm">
-                                                  {t("buttons.update")}
+                                                  {t(
+                                                       "collaboration.buttons.update"
+                                                  )}
                                              </button>
                                         </form>
                                    </div>
@@ -363,7 +379,9 @@ export default async function CollaborationPage() {
                                    {/* participants */}
                                    <div className="mt-4 grid gap-2">
                                         <div className="text-sm font-medium">
-                                             {t("headers.participants")}
+                                             {t(
+                                                  "collaboration.headers.participants"
+                                             )}
                                         </div>
                                         <div className="flex flex-wrap gap-2">
                                              {c.participants.map(
@@ -401,7 +419,9 @@ export default async function CollaborationPage() {
                                                   className="min-w-[240px] flex-1 rounded-xl border px-3 py-2 text-sm"
                                              />
                                              <button className="rounded-xl border px-3 py-2 text-sm">
-                                                  {t("buttons.invite")}
+                                                  {t(
+                                                       "collaboration.buttons.invite"
+                                                  )}
                                              </button>
                                         </form>
                                    </div>
@@ -432,7 +452,7 @@ export default async function CollaborationPage() {
                                                                  </div>
                                                                  <div className="text-xs text-muted-foreground">
                                                                       {t(
-                                                                           "div.value"
+                                                                           "collaboration.div.value"
                                                                       )}{" "}
                                                                       {Number(
                                                                            ci
@@ -458,7 +478,7 @@ export default async function CollaborationPage() {
                                    {/* comments */}
                                    <div className="mt-4 grid gap-3">
                                         <div className="text-sm font-medium">
-                                             {t("div.discussion")}
+                                             {t("collaboration.div.discussion")}
                                         </div>
                                         <form
                                              action={addComment}
@@ -475,7 +495,9 @@ export default async function CollaborationPage() {
                                                   className="flex-1 rounded-xl border px-3 py-2 text-sm"
                                              />
                                              <button className="rounded-xl border px-3 py-2 text-sm">
-                                                  {t("buttons.post")}
+                                                  {t(
+                                                       "collaboration.buttons.post"
+                                                  )}
                                              </button>
                                         </form>
                                         <div className="grid gap-2">
