@@ -236,14 +236,27 @@
      "app": {
           "headers": {
                "title": "Wildfire Insurance Claim Assistant",
-               "streamline": "Streamline Your Claim Process"
+               "streamline": "Streamline Your Claim Process",
+               "how": "How It Works"
           },
           "paragraphs": {
                "description": "Simplify your insurance claim process with our\nintelligent home inventory management system."
           },
           "title": {
-               "organize": "Organize by Room"
+               "organize": "Organize by Room",
+               "detail": "Detailed Item Records",
+               "generate1": "Generate Reports",
+               "sign": "Sign Up",
+               "add": "Add Inventory",
+               "generate2": "Generate Report"
           },
-          "description": {}
+          "description": {
+               "sort": "Sort and categorize your items by room, ensuring nothing is overlooked in your claim.",
+               "add": "Add comprehensive details to each item, strengthening your insurance claim with accurate information.",
+               "create": "Create professional PDF reports of your inventory, complete with item values for easy submission.",
+               "account": "Create your account and set up your profile.",
+               "addRooms": "Easily add rooms and items with our guided process.",
+               "report": "Create a comprehensive PDF report for your insurance claim."
+          }
      }
 }
