@@ -11,7 +11,7 @@
                "totalValue": "Total Value"
           },
           "paragraphs": {
-               "start": "Begin by adding rooms to your inventory. This will help \n organize your belongings and streamline the claim process.",
+               "start": "Begin by adding rooms to your inventory. This will help \norganize your belongings and streamline the claim process.",
                "manage": "Manage and add rooms to your inventory",
                "invite": "Invite others to help with your claim"
           },
@@ -63,7 +63,6 @@
      },
 
      "itemsClient": {
-          "headers": {},
           "div": {
                "totalValue": "Total Value: $"
           },
@@ -75,5 +74,160 @@
                "addModel": "+ Add model number",
                "addSerial": "+ Add serial number"
           }
+     },
+
+     "privacy": {
+          "headers": {
+               "privacy": "Privacy Policy",
+               "data": "Data Protection",
+               "auth": "Authentication"
+          },
+          "paragraphs": {
+               "p1": "• Your inventory data is encrypted at rest using industry-standard \nencryption",
+               "p2": "• All data transfers are secured with SSL/TLS encryption",
+               "p3": "• We never share your personal information with third parties",
+               "p4": "• You can request deletion of your data at any time",
+               "p5": "We use Google OAuth 2.0 for secure authentication, meaning:",
+               "p6": "• We never see or store your password",
+               "p7": "• Two-factor authentication is supported",
+               "p8": "• You can revoke access at any time through your Google account"
+          }
+     },
+
+     "profile": {
+          "headers": {
+               "settings": "Profile Settings",
+               "picture": "Profile Picture",
+               "danger": "Danger Zone"
+          },
+          "handlers": {
+               "updatePfp1": "Failed to update profile",
+               "updatePfp2": "Failed to update profile. Please try again.",
+               "deleteConfirm": "Are you sure you want to delete your account? This cannot be undone.",
+               "deleteFail1": "Failed to delete account",
+               "error": "Error: ",
+               "deleteFail2": "Failed to delete account. Please try again."
+          },
+          "paragraphs": {
+               "success": "Profile updated successfully! Please \nsign out and sign in again to see the \nchanges.",
+               "update": "Update your picture via your Google account",
+               "delete": "Once you delete your account, there is no going back.\nPlease be certain."
+          },
+          "form": {
+               "display": "Display Name",
+               "email": "Email Address",
+               "save": "Save Changes"
+          },
+          "buttons": {
+               "delete": "Delete Account"
+          }
+     },
+
+     "roomsClient": {
+          "headers": {
+               "rooms": "Your Rooms",
+               "items": "Items "
+          },
+          "handlers": {
+               "roomFail1": "Failed to create room",
+               "roomFail2": "Failed to create room. Please try again."
+          },
+          "paragraphs": {
+               "room": "No rooms yet",
+               "add": "Add your first room to get started!",
+               "no": "No items in this room",
+               "more": " more items"
+          },
+          "form": {
+               "name": "Room Name",
+               "cancel": "Cancel",
+               "create": "Create Room"
+          },
+          "buttons": {
+               "room": "Add New Room",
+               "add": "Add Your First Room"
+          }
+     },
+
+     "roomIdClient": {
+          "headers": {
+               "add": "Add New Item"
+          },
+          "handlers": {
+               "update": "Failed to update room name: ",
+               "negative": "Please enter a valid non-negative number for value.",
+               "network": "Network response was not ok",
+               "add": "Failed to add item. Please try again.",
+               "delete1": "Failed to delete",
+               "delete2": "Delete error: ",
+               "delete3": "Failed to delete item. Please try again."
+          },
+          "link": {
+               "back": "← Back to Rooms",
+               "edit": "Edit"
+          },
+          "buttons": {
+               "save": "Save",
+               "cancel": "Cancel",
+               "edit": "✏️",
+               "add": "Add Item",
+               "delete": "Delete"
+          }
+     },
+
+     "footer": {
+          "headers": {
+               "security": "Security",
+               "privacy": "Privacy Policy",
+               "trust": "Trust & Safety"
+          }
+     },
+
+     "formHelper": {
+          "text": {
+               "brand": "Specifying brand name helps ensure like-quality replacement",
+               "serial": "Important for electronics and high-value items",
+               "price": "Helps establish item value for insurance claims",
+               "description": "Include specific features, materials, and condition",
+               "photos": "Visual proof of ownership and condition"
+          }
+     },
+
+     "navigation": {
+          "link": {
+               "home": "Home Inventory",
+               "dashboard": "Dashboard",
+               "room": "Rooms",
+               "items": "All Items",
+               "collab": "Collaboration"
+          },
+          "buttons": {
+               "signOut": "Sign Out"
+          }
+     },
+
+     "roomCard": {
+          "buttons": {
+               "save": "Save",
+               "delete": "Delete",
+               "edit": "Edit"
+          },
+          "link": {
+               "view": "View Items"
+          }
+     },
+
+     "app": {
+          "headers": {
+               "title": "Wildfire Insurance Claim Assistant",
+               "streamline": "Streamline Your Claim Process"
+          },
+          "paragraphs": {
+               "description": "Simplify your insurance claim process with our\nintelligent home inventory management system."
+          },
+          "title": {
+               "organize": "Organize by Room"
+          },
+          "description": {}
      }
 }
