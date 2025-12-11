@@ -23,19 +23,23 @@ export default async function RoomItemsPage({
     redirect("/");
   }
 
-  const room = await prisma.room.findUnique({
+  const membership = await prisma.roomMembership.findFirst({
     where: {
-      id: roomId,
+      roomId,
       userId: user.id,
     },
     include: {
-      items: true,
+      room: {
+        include: {
+          items: true,
+        },
+      },
     },
   });
 
-  if (!room) {
+  if (!membership) {
     redirect("/rooms");
   }
 
-  return <RoomClient room={room} />;
+  return <RoomClient room={membership.room} userId={user.id} />;
 }
