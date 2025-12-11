@@ -119,7 +119,7 @@ export default async function DashboardPage() {
                                         <h3 className="text-2xl font-bold text-gray-900 mb-4">
                                              {t("headers.start")}
                                         </h3>
-                                        <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+                                        <p className="whitespace-pre-line text-gray-600 mb-8 max-w-2xl mx-auto">
                                              {t("paragraphs.start")}
                                         </p>
                                         <Link
