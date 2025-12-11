@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "claim": "Collaborate on Claims"
+    },
+    "paragraphs": {
+        "claim": "Create a claim, invite collaborators, attach items, and track status."
+    },
+    "buttons": {
+        "back": "Back to dashboard"
+    }
+}
