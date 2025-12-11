@@ -6,8 +6,8 @@
                "room": "Habitaciones",
                "item": "Artículos",
                "collaboration": "Colaboración",
-               "totalRoom": "Total de Habitaciones",
-               "totalItem": "Total de Artículos",
+               "totalRooms": "Total de Habitaciones",
+               "totalItems": "Total de Artículos",
                "totalValue": "Valor Total"
           },
           "paragraphs": {
@@ -63,6 +63,9 @@
      },
 
      "itemsClient": {
+          "headers": {
+               "allItems": "Todos los Artículos"
+          },
           "div": {
                "totalValue": "Valor Total: $"
           },

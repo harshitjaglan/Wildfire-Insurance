@@ -6,8 +6,8 @@
                "room": "房间",
                "item": "物品",
                "collaboration": "协作",
-               "totalRoom": "房间总数",
-               "totalItem": "物品总数",
+               "totalRooms": "房间总数",
+               "totalItems": "物品总数",
                "totalValue": "总价值"
           },
           "paragraphs": {
@@ -63,6 +63,9 @@
      },
 
      "itemsClient": {
+          "headers": {
+               "allItems": "所有物品"
+          },
           "div": {
                "totalValue": "总价值：$"
           },
