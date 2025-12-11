@@ -74,8 +74,11 @@ export function Navigation({ lang, labels }: { lang: Locale; labels: NavLabels }
           </div>
 
           {/* User Menu + Language switcher */}
-          <div className="flex items-center">
+          <div className="flex items-center gap-5">
             <LanguageSwitcher current={lang} />
+
+            <div className="w-px h-5 bg-gray-300" />
+
             {session?.user?.image && (
               <Image
                 src={session.user.image}
@@ -85,9 +88,10 @@ export function Navigation({ lang, labels }: { lang: Locale; labels: NavLabels }
                 className="rounded-full"
               />
             )}
+
             <button
               onClick={() => signOut()}
-              className="ml-4 text-gray-500 hover:text-gray-700"
+              className="text-gray-500 hover:text-gray-700"
             >
               {labels.signOut}
             </button>
