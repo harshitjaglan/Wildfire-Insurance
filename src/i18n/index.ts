@@ -1,105 +1,46 @@
+import { cookies } from "next/headers";
 import en from "../locales/en.json";
 import es from "../locales/es.json";
-import ch from "../locales/ch.json";
+import zh from "../locales/zh.json";
 
-export type Locale = "en" | "es" | "ch";
+const messages = { en, es, zh } as const;
+export type Locale = keyof typeof messages;
 
-type TranslationValue = string | number | TranslationObject | PluralTemplate;
-interface TranslationObject {
-     [key: string]: TranslationValue;
+export function getCurrentLocale(): Locale {
+  const cookieLang = cookies().get("lang")?.value as Locale | undefined;
+  if (cookieLang && cookieLang in messages) return cookieLang;
+  return "en";
 }
 
-interface PluralTemplate {
-     one: string;
-     other: string;
+function getNested(obj: any, path: string) {
+  return path.split(".").reduce((acc, part) => (acc ? acc[part] : undefined), obj);
 }
 
-const messages: Record<Locale, TranslationObject> = {
-     en: en as TranslationObject,
-     es: es as TranslationObject,
-     ch: ch as TranslationObject,
-};
-
-let currentLocale: Locale = "en";
-
-export function setLocale(locale: Locale) {
-     if (messages[locale]) {
-          currentLocale = locale;
-     } else {
-          console.warn(`Unknown locale "${locale}", falling back to "en"`);
-          currentLocale = "en";
-     }
+function interpolate(str: string, values: Record<string, string | number>) {
+  return Object.keys(values).reduce(
+    (acc, key) =>
+      acc.replace(new RegExp(`{{\\s*${key}\\s*}}`, "g"), String(values[key])),
+    str
+  );
 }
 
-export function getLocale(): Locale {
-     return currentLocale;
-}
+export function t(
+  key: string,
+  options?: { values?: Record<string, string | number>; count?: number }
+) {
+  const locale = getCurrentLocale();
+  const dict = messages[locale];
+  const { values = {}, count } = options || {};
 
-export interface TOptions {
-     values?: Record<string, string | number>;
-     count?: number;
-}
+  let template = getNested(dict, key);
 
-export function t(key: string, options: TOptions = {}): string {
-     const { values = {}, count } = options;
+  if (template === undefined || template === null) return key;
 
-     const dict = messages[currentLocale] ?? {};
-     let template = getNested(dict, key);
+  if (typeof count === "number" && typeof template === "object") {
+    template = count === 1 ? template.one : template.other;
+  }
 
-     // fallback: if key not found, just return the key
-     if (template === undefined || template === null) {
-          return key;
-     }
+  if (typeof template !== "string") return key;
 
-     if (typeof count === "number" && isPluralTemplate(template)) {
-          template = count === 1 ? template.one : template.other;
-     }
-
-     const allValues: Record<string, string | number> = { ...values };
-     if (typeof count === "number" && allValues.count === undefined) {
-          allValues.count = count;
-     }
-
-     if (typeof template !== "string") {
-          return String(template);
-     }
-
-     return interpolate(template, allValues);
-}
-
-// --- helpers ---
-
-function getNested(
-     obj: TranslationObject,
-     path: string
-): TranslationValue | undefined {
-     return path
-          .split(".")
-          .reduce<TranslationValue | undefined>((acc, part) => {
-               if (acc === undefined || acc === null) return undefined;
-               if (typeof acc !== "object") return undefined;
-               return (acc as TranslationObject)[part];
-          }, obj);
-}
-
-function interpolate(
-     str: string,
-     values: Record<string, string | number>
-): string {
-     return Object.keys(values).reduce((acc, key) => {
-          const value = String(values[key]);
-          const regex = new RegExp(`{{\\s*${key}\\s*}}`, "g");
-          return acc.replace(regex, value);
-     }, str);
-}
-
-function isPluralTemplate(value: TranslationValue): value is PluralTemplate {
-     return (
-          typeof value === "object" &&
-          value !== null &&
-          "one" in value &&
-          "other" in value &&
-          typeof (value as any).one === "string" &&
-          typeof (value as any).other === "string"
-     );
+  return interpolate(template, values);
 }

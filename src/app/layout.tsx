@@ -1,21 +1,28 @@
 import React from "react";
 import { Navigation } from "@/components/Navigation";
 import Providers from "./providers";
-import { SignInButton } from "@/components/ui/SignInButton";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
+import { t, getCurrentLocale, type Locale } from "@/i18n";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({children,}: {children: React.ReactNode;}) {
+  const lang: Locale = getCurrentLocale();
+
+  const navLabels = {
+    home: t("navigation.link.home"),
+    dashboard: t("navigation.link.dashboard"),
+    room: t("navigation.link.room"),
+    items: t("navigation.link.items"),
+    signOut: t("navigation.buttons.signOut"),
+  };
+
   return (
-    <html lang="en">
+    <html lang={lang}>
       <body className="inter.className flex flex-col min-h-screen">
         <Providers>
-          <Navigation />
+          <Navigation lang={lang} labels={navLabels} />
           <main className="flex-grow">{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>
