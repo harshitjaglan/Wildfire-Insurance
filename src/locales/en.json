@@ -81,7 +81,8 @@
                "room": "No rooms yet",
                "add": "Add your first room to get started!",
                "no": "No items in this room",
-               "more": " more items"
+               "more": " more items",
+               "placeholder": "e.g., Living Room, Kitchen, Bedroom"
           },
           "form": {
                "name": "Room Name",

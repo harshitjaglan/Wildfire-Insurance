@@ -42,6 +42,7 @@ type ClientLabels = {
     add1: string;
     no: string;
     more: string;
+    placeholder: string;
     name: string;
     cancel: string;
     create: string;
@@ -265,7 +266,7 @@ export function RoomsClient({ user, labels }: { user: User; labels: ClientLabels
                                                        )
                                                   }
                                                   className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow duration-200"
-                                                  placeholder="e.g., Living Room, Kitchen, Bedroom"
+                                                  placeholder={labels.placeholder}
                                                   required
                                              />
                                         </div>

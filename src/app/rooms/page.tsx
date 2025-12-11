@@ -32,6 +32,7 @@ export default async function RoomsPage() {
       add1: t("roomsClient.paragraphs.add"),
       no: t("roomsClient.paragraphs.no"),
       more: t("roomsClient.paragraphs.more"),
+      placeholder: t("roomsClient.paragraphs.placeholder"),
       name: t("roomsClient.form.name"),
       cancel: t("roomsClient.form.cancel"),
       create: t("roomsClient.form.create"),

@@ -81,7 +81,8 @@
                "room": "Aún no hay habitaciones",
                "add": "¡Agrega tu primera habitación para comenzar!",
                "no": "No hay artículos en esta habitación",
-               "more": " más artículos"
+               "more": " más artículos",
+               "placeholder": "p. ej., Sala, Cocina, Dormitorio"
           },
           "form": {
                "name": "Nombre de la Habitación",
