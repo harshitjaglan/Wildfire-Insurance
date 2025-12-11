@@ -13,16 +13,8 @@ export default async function RoomsPage() {
 
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
-  });
-
-  if (!user) {
-    redirect("/");
-  }
-
-  const memberships = await prisma.roomMembership.findMany({
-    where: { userId: user.id },
     include: {
-      room: {
+      rooms: {
         include: {
           items: true,
         },
@@ -30,7 +22,9 @@ export default async function RoomsPage() {
     },
   });
 
-  const rooms = memberships.map((m) => m.room);
+  if (!user) {
+    redirect("/");
+  }
 
-  return <RoomsClient user={{ id: user.id, rooms }} />;
+  return <RoomsClient user={user} />;
 }
