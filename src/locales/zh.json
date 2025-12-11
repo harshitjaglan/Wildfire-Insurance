@@ -21,47 +21,6 @@
           }
      },
 
-     "collaboration": {
-          "headers": {
-               "claim": "协作处理理赔",
-               "newClaim": "创建新理赔",
-               "yourClaims": "您的协作理赔",
-               "participants": "参与者"
-          },
-          "paragraphs": {
-               "claim": "创建理赔、邀请协作者、附加物品并追踪状态。",
-               "noClaims": "尚无理赔。请在上方创建并邀请他人协助。"
-          },
-          "div": {
-               "incidentDate": "发生于 ",
-               "value": "价值：$",
-               "totalValue": "总价值：$",
-               "discussion": "讨论"
-          },
-          "link": {},
-          "buttons": {
-               "createClaim": "创建理赔",
-               "update": "更新",
-               "invite": "邀请",
-               "post": "发布"
-          },
-          "form": {
-               "title": "标题",
-               "incident": "事件日期",
-               "invite": "邀请协作者（邮箱，逗号分隔）",
-               "description": "描述",
-               "select": "选择要包含的物品",
-               "noItems": "此房间中没有物品。"
-          },
-          "options": {
-               "draft": "草稿",
-               "evidence": "收集证据",
-               "submitted": "已提交",
-               "approved": "已批准",
-               "rejected": "已拒绝"
-          }
-     },
-
      "privacy": {
           "headers": {
                "privacy": "隐私政策",
@@ -268,17 +227,6 @@
           }
      },
 
-     "items": {
-          "handlers": {
-               "delete1": "删除错误：",
-               "delete2": "无法删除物品",
-               "unauthorized": "未授权",
-               "error": "更新物品时出错",
-               "room": "未找到房间",
-               "item": "未找到物品"
-          }
-     },
-
      "pdf": {
           "handlers": {
                "user": "未找到用户",
@@ -325,7 +273,51 @@
           "buttons": {
                "save": "保存更改"
           }
-     }
+     },
 
+     "collaboration": {
+          "handlers": {
+               "unauthorized": "未授权",
+               "user": "未找到用户",
+               "forbidden1": "禁止操作——只有所有者可以更改角色",
+               "invalid": "无效的角色",
+               "change": "无法更改角色——房间必须至少有一名所有者",
+               "forbidden2": "禁止操作——只有所有者可以移除协作者",
+               "remove": "无法移除——房间必须至少有一名所有者",
+               "forbidden3": "禁止操作",
+               "email": "邮箱为必填项",
+               "notFound": "未找到使用该邮箱的用户",
+               "already": "该用户已经是协作者",
+               "fail": "获取协作者失败",
+               "addFail1": "添加协作者失败",
+               "addFail2": "添加协作者失败。请稍后再试。",
+               "updateFail": "更新角色失败",
+               "success": "添加成功",
+               "confirm": "您确定要移除",
+               "removeFail": "移除协作者失败"
+          },
+          "label": {
+               "email": "邮箱地址",
+               "role": "角色"
+          },
+          "paragraphs": {
+               "view": "查看者只能查看物品。编辑者可以添加和编辑物品。"
+          },
+          "buttons": {
+               "cancel": "取消"
+          }
+     },
+
+     "items": {
+          "handlers": {
+               "delete1": "删除错误：",
+               "delete2": "无法删除物品",
+               "unauthorized": "未授权",
+               "error": "更新物品时出错",
+               "room": "未找到房间",
+               "item": "未找到物品",
+               "forbidden": "禁止访问：您无权查看此房间"
+          }
+     }
 
 }

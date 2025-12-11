@@ -21,47 +21,6 @@
           }
      },
 
-     "collaboration": {
-          "headers": {
-               "claim": "Collaborate on Claims",
-               "newClaim": "Create a new claim",
-               "yourClaims": "Your collaborative claims",
-               "participants": "Participants"
-          },
-          "paragraphs": {
-               "claim": "Create a claim, invite collaborators, attach items, and track status.",
-               "noClaims": "No claims yet. Create one above and invite others to help."
-          },
-          "div": {
-               "incidentDate": "Incident on ",
-               "value": "Value: $",
-               "totalValue": "Total Value: $",
-               "discussion": "Discussion"
-          },
-          "link": {},
-          "buttons": {
-               "createClaim": "Create Claim",
-               "update": "Update",
-               "invite": "Invite",
-               "post": "Post"
-          },
-          "form": {
-               "title": "Title",
-               "incident": "Incident date",
-               "invite": "Invite collaborators (emails, comma separated)",
-               "description": "Description",
-               "select": "Select items to include",
-               "noItems": "No items in this room."
-          },
-          "options": {
-               "draft": "Draft",
-               "evidence": "Gathering Evidence",
-               "submitted": "Submitted",
-               "approved": "Approved",
-               "rejected": "Rejected"
-          }
-     },
-
      "privacy": {
           "headers": {
                "privacy": "Privacy Policy",
@@ -268,17 +227,6 @@
           }
      },
 
-     "items": {
-          "handlers": {
-               "delete1": "Delete error:",
-               "delete2": "Failed to delete item",
-               "unauthorized": "Unauthorized",
-               "error": "Error updating item",
-               "room": "Room not found",
-               "item": "Item not found"
-          }
-     },
-
      "pdf": {
           "handlers": {
                "user": "User not found",
@@ -298,7 +246,7 @@
                "delete": "Error deleting user"
           }
      },
-     
+
      "itemForm": {
           "handlers": {
                "update1": "Failed to update item",
@@ -324,6 +272,52 @@
           },
           "buttons": {
                "save": "Save Changes"
+          }
+     },
+  
+     "collaboration": {
+          "handlers": {
+               "unauthorized": "Unauthorized",
+               "user": "User not found",
+               "forbidden1": "Forbidden - only owners can change roles",
+               "invalid": "Invalid role",
+               "change": "Cannot change role - room must have at least one owner",
+               "forbidden2": "Forbidden - only owners can remove collaborators",
+               "remove": "Cannot remove - room must have at least one owner",
+               "forbidden3": "Forbidden",
+               "email": "Email is required",
+               "notFound": "User not found with that email",
+               "already": "User is already a collaborator",
+               "fail": "Failed to fetch collaborators",
+               "addFail1": "Failed to add collaborator",
+               "addFail2": "Failed to add collaborator. Please try again.",
+               "updateFail": "Failed to update role",
+               "success": "Successfully added",
+               "confirm": "Are you sure you want to remove",
+               "removeFail": "Failed to remove collaborator"
+          },
+          "label": {
+               "email":"Email Address",
+               "role": "Role"
+          },
+          "paragraphs": {
+               "view": "Viewers can only view items. Editors can add and edit items."
+          },
+          "buttons": {
+               "cancel": "Cancel"
+          }
+     },
+
+     
+     "items": {
+          "handlers": {
+               "delete1": "Delete error:",
+               "delete2": "Failed to delete item",
+               "unauthorized": "Unauthorized",
+               "error": "Error updating item",
+               "room": "Room not found",
+               "item": "Item not found",
+               "forbidden": "Forbidden - no access to this room"
           }
      }
 }

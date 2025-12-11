@@ -21,47 +21,6 @@
           }
      },
 
-     "collaboration": {
-          "headers": {
-               "claim": "Colabora en Reclamos",
-               "newClaim": "Crear un nuevo reclamo",
-               "yourClaims": "Tus reclamos colaborativos",
-               "participants": "Participantes"
-          },
-          "paragraphs": {
-               "claim": "Crea un reclamo, invita colaboradores, adjunta artículos y realiza un seguimiento del estado.",
-               "noClaims": "Aún no hay reclamos. Crea uno arriba e invita a otros para ayudar."
-          },
-          "div": {
-               "incidentDate": "Incidente el ",
-               "value": "Valor: $",
-               "totalValue": "Valor Total: $",
-               "discussion": "Discusión"
-          },
-          "link": {},
-          "buttons": {
-               "createClaim": "Crear Reclamo",
-               "update": "Actualizar",
-               "invite": "Invitar",
-               "post": "Publicar"
-          },
-          "form": {
-               "title": "Título",
-               "incident": "Fecha del incidente",
-               "invite": "Invitar colaboradores (correos electrónicos, separados por comas)",
-               "description": "Descripción",
-               "select": "Selecciona los artículos a incluir",
-               "noItems": "No hay artículos en esta habitación."
-          },
-          "options": {
-               "draft": "Borrador",
-               "evidence": "Recolección de Evidencia",
-               "submitted": "Enviado",
-               "approved": "Aprobado",
-               "rejected": "Rechazado"
-          }
-     },
-
      "privacy": {
           "headers": {
                "privacy": "Política de Privacidad",
@@ -268,17 +227,6 @@
           }
      },
 
-     "items": {
-          "handlers": {
-               "delete1": "Error al eliminar:",
-               "delete2": "No se pudo eliminar el artículo",
-               "unauthorized": "No autorizado",
-               "error": "Error al actualizar el artículo",
-               "room": "Habitación no encontrada",
-               "item": "Artículo no encontrado"
-          }
-     },
-
      "pdf": {
           "handlers": {
                "user": "Usuario no encontrado",
@@ -324,6 +272,51 @@
           },
           "buttons": {
                "save": "Guardar Cambios"
+          }
+     },
+
+     "collaboration": {
+          "handlers": {
+               "unauthorized": "No autorizado",
+               "user": "Usuario no encontrado",
+               "forbidden1": "Prohibido: solo los propietarios pueden cambiar roles",
+               "invalid": "Rol inválido",
+               "change": "No se puede cambiar el rol: la habitación debe tener al menos un propietario",
+               "forbidden2": "Prohibido: solo los propietarios pueden eliminar colaboradores",
+               "remove": "No se puede eliminar: la habitación debe tener al menos un propietario",
+               "forbidden3": "Prohibido",
+               "email": "El correo electrónico es obligatorio",
+               "notFound": "No se encontró un usuario con ese correo electrónico",
+               "already": "El usuario ya es un colaborador",
+               "fail": "Error al obtener colaboradores",
+               "addFail1": "No se pudo agregar colaborador",
+               "addFail2": "No se pudo agregar colaborador. Por favor, inténtalo de nuevo.",
+               "updateFail": "Error al actualizar el rol",
+               "success": "Agregado exitosamente",
+               "confirm": "¿Estás seguro de que deseas eliminar a",
+               "removeFail": "No se pudo eliminar al colaborador"
+          },
+          "label": {
+               "email": "Dirección de Correo",
+               "role": "Rol"
+          },
+          "paragraphs": {
+               "view": "Los espectadores solo pueden ver artículos. Los editores pueden agregar y editar artículos."
+          },
+          "buttons": {
+               "cancel": "Cancelar"
+          }
+     },
+
+     "items": {
+          "handlers": {
+               "delete1": "Error al eliminar:",
+               "delete2": "No se pudo eliminar el artículo",
+               "unauthorized": "No autorizado",
+               "error": "Error al actualizar el artículo",
+               "room": "Habitación no encontrada",
+               "item": "Artículo no encontrado",
+               "forbidden": "Prohibido: no tienes acceso a esta habitación"
           }
      }
 }
