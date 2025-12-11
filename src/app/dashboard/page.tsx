@@ -184,7 +184,7 @@ export default async function DashboardPage() {
                                                   <div className="flex items-center justify-between mb-4">
                                                        <h3 className="text-lg font-bold text-gray-900">
                                                             {t(
-                                                                 "dashboard.headers.totalRooms"
+                                                                 "dashboard.headers.totalRoom"
                                                             )}
                                                        </h3>
                                                        <FaHome className="text-2xl text-indigo-600" />
@@ -197,7 +197,7 @@ export default async function DashboardPage() {
                                                   <div className="flex items-center justify-between mb-4">
                                                        <h3 className="text-lg font-bold text-gray-900">
                                                             {t(
-                                                                 "dashboard.headers.totalItems"
+                                                                 "dashboard.headers.totalItem"
                                                             )}
                                                        </h3>
                                                        <FaBoxOpen className="text-2xl text-green-600" />

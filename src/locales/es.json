@@ -6,8 +6,8 @@
                "room": "Habitaciones",
                "item": "Artículos",
                "collaboration": "Colaboración",
-               "totalRooms": "Total de Habitaciones",
-               "totalItems": "Total de Artículos",
+               "totalRoom": "Total de Habitaciones",
+               "totalItem": "Total de Artículos",
                "totalValue": "Valor Total"
           },
           "paragraphs": {
