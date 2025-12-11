@@ -24,6 +24,12 @@ export async function POST(req: Request) {
     data: {
       name,
       userId: user.id,
+      memberships: {
+        create: {
+          userId: user.id,
+          role: "OWNER",
+        },
+      },
     },
     include: {
       _count: {
@@ -52,10 +58,21 @@ export async function PUT(req: Request) {
     return new NextResponse("User not found", { status: 404 });
   }
 
+  const hasAccess = await prisma.roomMembership.findFirst({
+    where: {
+      roomId: id,
+      userId: user.id,
+      role: { in: ["OWNER", "EDITOR"] },
+    },
+  });
+
+  if (!hasAccess) {
+    return new NextResponse("Forbidden", { status: 403 });
+  }
+
   const room = await prisma.room.update({
     where: {
       id,
-      userId: user.id,
     },
     data: { name },
     include: {
@@ -85,10 +102,21 @@ export async function DELETE(req: Request) {
     return new NextResponse("User not found", { status: 404 });
   }
 
+  const isOwner = await prisma.roomMembership.findFirst({
+    where: {
+      roomId: id,
+      userId: user.id,
+      role: "OWNER",
+    },
+  });
+
+  if (!isOwner) {
+    return new NextResponse("Forbidden", { status: 403 });
+  }
+
   await prisma.room.delete({
     where: {
       id,
-      userId: user.id,
     },
   });
 

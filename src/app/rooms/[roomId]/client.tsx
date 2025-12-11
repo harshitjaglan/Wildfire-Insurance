@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { CollaboratorsSection } from "./components/CollaboratorsSection";
 
 interface Item {
   id: string;
@@ -28,7 +29,13 @@ type NewItemForm = {
   value: string; // Allowing string to handle empty input
 };
 
-export function RoomClient({ room: initialRoom }: { room: Room }) {
+export function RoomClient({
+  room: initialRoom,
+  userId,
+}: {
+  room: Room;
+  userId: string;
+}) {
   const [room, setRoom] = useState<Room>(initialRoom);
   const [isEditing, setIsEditing] = useState(false);
   const [newName, setNewName] = useState(room.name);
@@ -164,6 +171,11 @@ export function RoomClient({ room: initialRoom }: { room: Room }) {
               </button>
             </div>
           )}
+        </div>
+
+        {/* Collaborators Section */}
+        <div className="mb-6">
+          <CollaboratorsSection roomId={room.id} currentUserId={userId} />
         </div>
 
         {/* Add Item Form */}
