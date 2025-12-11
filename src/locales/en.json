@@ -175,6 +175,22 @@
           }
      },
 
+     "signInButton": {
+          "buttons": {
+               "in": "Sign In",
+               "out": "Sign Out"
+          },
+          "paragraphs": {
+               "welcome": "Welcome, "
+          }
+     },
+
+     "inventoryButton": {
+          "buttons": {
+               "download": "Download Inventory PDF"
+          }
+     },
+
      "footer": {
           "headers": {
                "security": "Security",
