@@ -1,10 +1,10 @@
-import { cookies } from "next/headers";
+import { cookies } from "next/headers";        
+import { locales, type Locale } from "@/lib/locales";
 import en from "../locales/en.json";
 import es from "../locales/es.json";
 import zh from "../locales/zh.json";
 
 const messages = { en, es, zh } as const;
-export type Locale = keyof typeof messages;
 
 export function getCurrentLocale(): Locale {
   const cookieLang = cookies().get("lang")?.value as Locale | undefined;

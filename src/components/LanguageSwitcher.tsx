@@ -3,7 +3,7 @@
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { setLanguage } from "@/app/actions/setLanguage";
-import type { Locale } from "@/i18n";
+import type { Locale } from "@/lib/locales"; // ⬅️ changed
 
 export function LanguageSwitcher({ current }: { current: Locale }) {
   const [isPending, startTransition] = useTransition();
@@ -13,7 +13,7 @@ export function LanguageSwitcher({ current }: { current: Locale }) {
     const lang = e.target.value as Locale;
     startTransition(async () => {
       await setLanguage(lang);
-      router.refresh(); 
+      router.refresh();
     });
   }
 

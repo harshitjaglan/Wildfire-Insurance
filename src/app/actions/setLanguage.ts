@@ -1,11 +1,11 @@
 "use server";
 
 import { cookies } from "next/headers";
-import type { Locale } from "@/i18n";
+import type { Locale } from "@/lib/locales";
 
 export async function setLanguage(lang: Locale) {
   cookies().set("lang", lang, {
     path: "/",
-    maxAge: 60 * 60 * 24 * 365, 
+    maxAge: 60 * 60 * 24 * 365,
   });
 }

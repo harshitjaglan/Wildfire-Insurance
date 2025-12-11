@@ -3,7 +3,8 @@ import { Navigation } from "@/components/Navigation";
 import Providers from "./providers";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
-import { t, getCurrentLocale, type Locale } from "@/i18n";
+import { t, getCurrentLocale } from "@/i18n";
+import type { Locale } from "@/lib/locales";
 
 export default function RootLayout({children,}: {children: React.ReactNode;}) {
   const lang: Locale = getCurrentLocale();

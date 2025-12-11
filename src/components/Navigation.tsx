@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
-import type { Locale } from "@/i18n";
+import type { Locale } from "@/lib/locales";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 type NavLabels = {
