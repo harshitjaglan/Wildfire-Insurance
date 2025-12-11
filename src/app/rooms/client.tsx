@@ -15,7 +15,7 @@ import {
      Home,
      Warehouse,
 } from "lucide-react";
-import { t } from "../../i18n";
+
 
 interface Item {
      id: string;
@@ -33,6 +33,22 @@ interface User {
      rooms: Room[];
 }
 
+type ClientLabels = {
+    rooms: string;
+    items: string;
+    roomFail1: string;
+    roomFail2: string;
+    room1: string;
+    add1: string;
+    no: string;
+    more: string;
+    name: string;
+    cancel: string;
+    create: string;
+    room2: string;
+    add2: string;
+};
+
 const roomIcons: { [key: string]: any } = {
      bedroom: Bed,
      living: Sofa,
@@ -41,7 +57,7 @@ const roomIcons: { [key: string]: any } = {
      default: Warehouse,
 };
 
-export function RoomsClient({ user }: { user: User }) {
+export function RoomsClient({ user, labels }: { user: User; labels: ClientLabels }) {
      const [isModalOpen, setIsModalOpen] = useState(false);
      const [roomName, setRoomName] = useState("");
      const router = useRouter();
@@ -69,14 +85,14 @@ export function RoomsClient({ user }: { user: User }) {
                     }),
                });
 
-               if (!res.ok) throw new Error(t("roomsClien.handlers.roomFail1"));
+               if (!res.ok) throw new Error(labels.roomFail1);
 
                setRoomName("");
                setIsModalOpen(false);
                router.refresh();
           } catch (error) {
                console.error("Error:", error);
-               alert(t("roomsClien.handlers.roomFail1"));
+               alert(labels.roomFail2);
           }
      };
 
@@ -87,14 +103,14 @@ export function RoomsClient({ user }: { user: User }) {
                          <div className="flex items-center gap-3">
                               <Home className="h-8 w-8 text-indigo-600" />
                               <h1 className="text-3xl font-bold text-gray-900">
-                                   {t("roomsClient.headers.rooms")}
+                                   {labels.rooms}
                               </h1>
                          </div>
                          <button
                               onClick={() => setIsModalOpen(true)}
                               className="inline-flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md">
                               <Plus className="h-5 w-5" />
-                              {t("roomsClient.buttons.room")}
+                              {labels.room2}
                          </button>
                     </div>
 
@@ -104,17 +120,17 @@ export function RoomsClient({ user }: { user: User }) {
                                    <Warehouse className="h-12 w-12 text-gray-400" />
                                    <div>
                                         <p className="text-xl font-medium text-gray-900 mb-1">
-                                             {t("roomsClient.paragraphs.room")}
+                                             {labels.room1}
                                         </p>
                                         <p className="text-gray-500">
-                                             {t("roomsClient.paragraphs.add")}
+                                             {labels.add1}
                                         </p>
                                    </div>
                                    <button
                                         onClick={() => setIsModalOpen(true)}
                                         className="inline-flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-200 mt-4">
                                         <Plus className="h-5 w-5" />
-                                        {t("roomsClient.buttons.add")}
+                                        {labels.add2}
                                    </button>
                               </div>
                          </div>
@@ -147,9 +163,7 @@ export function RoomsClient({ user }: { user: User }) {
                                                             <div className="flex items-center gap-2">
                                                                  <Box className="h-4 w-4 text-gray-400" />
                                                                  <h3 className="text-sm font-medium text-gray-700">
-                                                                      {t(
-                                                                           "roomsClient.headers.items"
-                                                                      )}{" "}
+                                                                      {labels.items}{" "}
                                                                       (
                                                                       {
                                                                            room
@@ -164,9 +178,7 @@ export function RoomsClient({ user }: { user: User }) {
                                                                       .length ===
                                                                  0 ? (
                                                                       <p className="text-sm text-gray-500 italic">
-                                                                           {t(
-                                                                                "roomsClient.paragraphs.no"
-                                                                           )}
+                                                                           {labels.no}
                                                                       </p>
                                                                  ) : (
                                                                       <>
@@ -203,9 +215,7 @@ export function RoomsClient({ user }: { user: User }) {
                                                                                           .items
                                                                                           .length -
                                                                                           3}{" "}
-                                                                                     {t(
-                                                                                          "roomsClient.paragraphs.more"
-                                                                                     )}
+                                                                                     {labels.more}
                                                                                 </p>
                                                                            )}
                                                                       </>
@@ -226,7 +236,7 @@ export function RoomsClient({ user }: { user: User }) {
                               <div className="bg-white rounded-xl p-6 w-full max-w-md shadow-xl">
                                    <div className="flex items-center justify-between mb-6">
                                         <h2 className="text-xl font-semibold text-gray-900">
-                                             {t("roomsClient.buttons.add")}
+                                             {labels.add2}
                                         </h2>
                                         <button
                                              onClick={() =>
@@ -243,7 +253,7 @@ export function RoomsClient({ user }: { user: User }) {
                                              <label
                                                   htmlFor="name"
                                                   className="block text-sm font-medium text-gray-700 mb-1">
-                                                  {t("roomsClient.form.name")}
+                                                  {labels.name}
                                              </label>
                                              <input
                                                   type="text"
@@ -266,12 +276,12 @@ export function RoomsClient({ user }: { user: User }) {
                                                        setIsModalOpen(false)
                                                   }
                                                   className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium">
-                                                  {t("roomsClient.form.cancel")}
+                                                  {labels.cancel}
                                              </button>
                                              <button
                                                   type="submit"
                                                   className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-200 font-medium">
-                                                  {t("roomsClient.form.create")}
+                                                  {labels.create}
                                              </button>
                                         </div>
                                    </form>

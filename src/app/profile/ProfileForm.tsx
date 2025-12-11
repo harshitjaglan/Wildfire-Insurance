@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { t } from "../../i18n";
 
 interface User {
      id: string;
@@ -13,7 +12,26 @@ interface User {
      image: string | null;
 }
 
-export function ProfileForm({ user }: { user: User }) {
+type ClientLabels = {
+    settings: string;
+    picture: string;
+    danger: string;
+    updatePfp1: string;
+    updatePfp2: string;
+    deleteConfirm: string;
+    deleteFail1: string;
+    deleteFail2: string;
+    error: string;
+    success: string;
+    update: string;
+    delete1: string;
+    display: string;
+    email: string;
+    save: string;
+    delete2: string;
+};
+
+export function ProfileForm({ user, labels }: { user: User; labels: ClientLabels }) {
      const [name, setName] = useState(user.name || "");
      const [isDeleting, setIsDeleting] = useState(false);
      const [showSuccess, setShowSuccess] = useState(false);
@@ -32,20 +50,20 @@ export function ProfileForm({ user }: { user: User }) {
                     body: JSON.stringify({ name }),
                });
 
-               if (!res.ok) throw new Error(t("profile.handlers.updatePfp1"));
+               if (!res.ok) throw new Error(labels.updatePfp1);
 
                setShowSuccess(true);
                setTimeout(() => {
                     router.push("/dashboard");
                }, 3000);
           } catch (error) {
-               console.error(t("profile.handlers.error"), error);
-               alert(t("profile.handlers.updatePfp2"));
+               console.error(labels.error, error);
+               alert(labels.updatePfp2);
           }
      };
 
      const handleDelete = async () => {
-          if (!confirm(t("profile.handlers.deleteCconfirm"))) {
+          if (!confirm(labels.deleteConfirm)) {
                return;
           }
 
@@ -54,19 +72,19 @@ export function ProfileForm({ user }: { user: User }) {
                     method: "DELETE",
                });
 
-               if (!res.ok) throw new Error(t("profile.handlers.deleteFail1"));
+               if (!res.ok) throw new Error(labels.deleteFail1);
 
                router.push("/");
           } catch (error) {
-               console.error("Error:", error);
-               alert(t("profile.handlers.deleteFail2"));
+               console.error(labels.error, error);
+               alert(labels.deleteFail2);
           }
      };
 
      return (
           <div className="max-w-2xl mx-auto py-8 px-4">
                <h1 className="text-2xl font-bold mb-8">
-                    {t("profile.headers.settings")}
+                    {labels.settings}
                </h1>
 
                {showSuccess && (
@@ -86,7 +104,7 @@ export function ProfileForm({ user }: { user: User }) {
                               </div>
                               <div className="ml-3">
                                    <p className="whitespace-pre-line text-sm text-green-700">
-                                        {t("profile.paragraphs.success")}
+                                        {labels.success}
                                    </p>
                               </div>
                          </div>
@@ -106,10 +124,10 @@ export function ProfileForm({ user }: { user: User }) {
                          )}
                          <div>
                               <p className="text-sm text-gray-500">
-                                   {t("profile.headers.picture")}
+                                   {labels.picture}
                               </p>
                               <p className="text-sm text-gray-500">
-                                   {t("profile.paragraphs.update")}
+                                   {labels.update}
                               </p>
                          </div>
                     </div>
@@ -119,7 +137,7 @@ export function ProfileForm({ user }: { user: User }) {
                               <label
                                    htmlFor="name"
                                    className="block text-sm font-medium text-gray-700">
-                                   {t("profile.form.display")}
+                                   {labels.display}
                               </label>
                               <input
                                    type="text"
@@ -132,7 +150,7 @@ export function ProfileForm({ user }: { user: User }) {
 
                          <div>
                               <label className="block text-sm font-medium text-gray-700">
-                                   {t("profile.form.email")}
+                                   {labels.email}
                               </label>
                               <p className="mt-1 text-gray-500">{user.email}</p>
                          </div>
@@ -140,22 +158,22 @@ export function ProfileForm({ user }: { user: User }) {
                          <button
                               type="submit"
                               className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                              {t("profile.form.save")}
+                              {labels.save}
                          </button>
                     </form>
                </div>
 
                <div className="bg-white shadow rounded-lg p-6">
                     <h2 className="text-lg font-medium text-red-600 mb-4">
-                         {t("profile.headers.danger")}
+                         {labels.danger}
                     </h2>
                     <p className="text-gray-500 mb-4">
-                         {t("profile.paragraphs.delete")}
+                         {labels.delete1}
                     </p>
                     <button
                          onClick={handleDelete}
                          className="w-full bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
-                         {t("profile.buttons.delete")}
+                         {labels.delete2}
                     </button>
                </div>
           </div>

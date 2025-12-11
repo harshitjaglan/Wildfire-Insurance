@@ -3,13 +3,14 @@ import { jsPDF } from "jspdf";
 import { prisma } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { OPTIONS } from "../auth/[...nextauth]/route";
+import { t } from "../../../i18n";
 
 export async function GET(request: Request) {
   try {
     const session = await getServerSession(OPTIONS);
 
     if (!session?.user?.email) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse(t("items.handlers.unauthorized"), { status: 401 });
     }
 
     // Get user's rooms with their items
@@ -27,7 +28,7 @@ export async function GET(request: Request) {
     });
 
     if (!user) {
-      return new NextResponse("User not found", { status: 404 });
+      return new NextResponse(t("pdf.handlers.user"), { status: 404 });
     }
 
     // Create PDF document
@@ -39,7 +40,7 @@ export async function GET(request: Request) {
     doc.rect(0, 0, 210, 40, "F");
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(24);
-    doc.text("Home Inventory Report", 105, 25, { align: "center" });
+    doc.text(t("pdf.text.home"), 105, 25, { align: "center" });
     yPos = 50;
 
     let totalValue = 0;
@@ -62,8 +63,8 @@ export async function GET(request: Request) {
       // Table headers
       doc.setFontSize(12);
       doc.setTextColor(100, 100, 100);
-      doc.text("Item", 20, yPos);
-      doc.text("Value", 140, yPos);
+      doc.text(t("pdf.text.item"), 20, yPos);
+      doc.text(t("pdf.text.value"), 140, yPos);
       yPos += 7;
 
       room.items.forEach((item) => {

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { t } from "../../../i18n";
+
 
 interface Item {
      id: string;
@@ -23,13 +23,31 @@ interface Room {
      items: Item[];
 }
 
+type ClientLabels = {
+    add1: string;
+    update: string;
+    negative: string;
+    network: string;
+    add2: string;
+    delete1: string;
+    delete2: string;
+    delete3: string;
+    back: string;
+    edit1: string;
+    save: string;
+    cancel: string;
+    edit2: string;
+    add3: string;
+    delete4: string;
+};
+
 type NewItemForm = {
      name: string;
      description: string;
      value: string; // Allowing string to handle empty input
 };
 
-export function RoomClient({ room: initialRoom }: { room: Room }) {
+export function RoomClient({ room: initialRoom, labels }: { room: Room; labels: ClientLabels }) {
      const [room, setRoom] = useState<Room>(initialRoom);
      const [isEditing, setIsEditing] = useState(false);
      const [newName, setNewName] = useState(room.name);
@@ -55,7 +73,7 @@ export function RoomClient({ room: initialRoom }: { room: Room }) {
                     setIsEditing(false);
                }
           } catch (error) {
-               console.error(t("roomIdClient.handlers.update"), error);
+               console.error(labels.update, error);
           }
      };
 
@@ -64,7 +82,7 @@ export function RoomClient({ room: initialRoom }: { room: Room }) {
 
           // Validation: Check if the value is a valid number and non-negative
           if (isNaN(numericValue) || numericValue < 0) {
-               setError(t("roomIdClient.handlers.negative"));
+               setError(labels.negative);
                return;
           }
 
@@ -87,7 +105,7 @@ export function RoomClient({ room: initialRoom }: { room: Room }) {
                });
 
                if (!res.ok) {
-                    throw new Error(t("roomIdClient.handlers.network"));
+                    throw new Error(labels.network);
                }
 
                const item: Item = await res.json();
@@ -95,7 +113,7 @@ export function RoomClient({ room: initialRoom }: { room: Room }) {
                setNewItem({ name: "", description: "", value: "" });
                setError(null); // Clear any existing errors
           } catch (error) {
-               setError(t("roomIdClient.handlers.add"));
+               setError(labels.add2);
           }
      };
 
@@ -115,11 +133,11 @@ export function RoomClient({ room: initialRoom }: { room: Room }) {
                          items: prev.items.filter((item) => item.id !== itemId),
                     }));
                } else {
-                    throw new Error(t("roomIdClient.handlers.delete1"));
+                    throw new Error(labels.delete1);
                }
           } catch (error) {
-               console.error(t("roomIdClient.handlers.delete2"), error);
-               alert(t("roomIdClient.handlers.delete3"));
+               console.error(labels.delete2, error);
+               alert(labels.delete3);
           }
      };
 
@@ -129,7 +147,7 @@ export function RoomClient({ room: initialRoom }: { room: Room }) {
                     <Link
                          href="/rooms"
                          className="text-blue-500 hover:text-blue-600 mb-6 inline-block">
-                         {t("roomIdClient.link.back")}
+                         {labels.back}
                     </Link>
 
                     {/* Editable Room Name */}
@@ -147,12 +165,12 @@ export function RoomClient({ room: initialRoom }: { room: Room }) {
                                    <button
                                         onClick={handleUpdateName}
                                         className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
-                                        {t("roomIdClient.buttons.save")}
+                                        {labels.save}
                                    </button>
                                    <button
                                         onClick={() => setIsEditing(false)}
                                         className="text-gray-500 hover:text-gray-700">
-                                        {t("roomIdClient.buttons.cancel")}
+                                        {labels.cancel}
                                    </button>
                               </div>
                          ) : (
@@ -163,7 +181,7 @@ export function RoomClient({ room: initialRoom }: { room: Room }) {
                                    <button
                                         onClick={() => setIsEditing(true)}
                                         className="text-gray-500 hover:text-gray-700">
-                                        {t("roomIdClient.buttons.edit")}
+                                        {labels.edit2}
                                    </button>
                               </div>
                          )}
@@ -172,7 +190,7 @@ export function RoomClient({ room: initialRoom }: { room: Room }) {
                     {/* Add Item Form */}
                     <div className="bg-white shadow rounded-lg p-6 mb-6">
                          <h2 className="text-lg font-medium mb-4">
-                              {t("roomIdClient.headers.add")}
+                              {labels.add1}
                          </h2>
                          {error && (
                               <div className="mb-4 text-red-500">{error}</div>
@@ -220,7 +238,7 @@ export function RoomClient({ room: initialRoom }: { room: Room }) {
                          <button
                               onClick={addItem}
                               className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                              {t("roomIdClient.buttons.add")}
+                              {labels.add3}
                          </button>
                     </div>
 
@@ -246,16 +264,14 @@ export function RoomClient({ room: initialRoom }: { room: Room }) {
                                              <Link
                                                   href={`/items/${item.id}`}
                                                   className="text-blue-600 hover:text-blue-800">
-                                                  {t("roomIdClient.link.edit")}
+                                                  {labels.edit1}
                                              </Link>
                                              <button
                                                   onClick={() =>
                                                        handleDelete(item.id)
                                                   }
                                                   className="text-red-500 hover:text-red-700">
-                                                  {t(
-                                                       "roomIdClient.buttons.delete"
-                                                  )}
+                                                  {labels.delete4}
                                              </button>
                                         </div>
                                    </div>

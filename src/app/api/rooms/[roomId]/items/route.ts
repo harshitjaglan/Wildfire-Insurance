@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { OPTIONS } from "@/app/api/auth/[...nextauth]/route";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { t } from "../../../../../i18n";
 
 export async function POST(
   req: Request,
@@ -10,7 +11,7 @@ export async function POST(
   const session = await getServerSession(OPTIONS);
 
   if (!session?.user?.email) {
-    return new NextResponse("Unauthorized", { status: 401 });
+    return new NextResponse(t("items.handlers.unauthorized"), { status: 401 });
   }
 
   const { name, description, value } = await req.json();
@@ -20,7 +21,7 @@ export async function POST(
   });
 
   if (!user) {
-    return new NextResponse("User not found", { status: 404 });
+    return new NextResponse(t("pdf.handlers.user"), { status: 404 });
   }
 
   // Verify room belongs to user
@@ -32,7 +33,7 @@ export async function POST(
   });
 
   if (!room) {
-    return new NextResponse("Room not found", { status: 404 });
+    return new NextResponse(t("items.handlers.room"), { status: 404 });
   }
 
   const item = await prisma.item.create({
@@ -55,7 +56,7 @@ export async function DELETE(
   const session = await getServerSession(OPTIONS);
 
   if (!session?.user?.email) {
-    return new NextResponse("Unauthorized", { status: 401 });
+    return new NextResponse(t("items.handlers.unauthorized"), { status: 401 });
   }
 
   const user = await prisma.user.findUnique({
@@ -63,7 +64,7 @@ export async function DELETE(
   });
 
   if (!user) {
-    return new NextResponse("User not found", { status: 404 });
+    return new NextResponse(t("pdf.handlers.user"), { status: 404 });
   }
 
   // Verify room and item belong to user
@@ -82,7 +83,7 @@ export async function DELETE(
   });
 
   if (!room || room.items.length === 0) {
-    return new NextResponse("Item not found", { status: 404 });
+    return new NextResponse(t("items.handlers.item"), { status: 404 });
   }
 
   await prisma.item.delete({

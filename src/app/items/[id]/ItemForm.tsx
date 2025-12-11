@@ -5,7 +5,27 @@ import { useRouter } from "next/navigation";
 
 import { Item } from "@prisma/client";
 
-export function ItemForm({ initialItem }: { initialItem: Item }) {
+type ClientLabels = {
+    update1: string;
+    update2: string;
+    error: string;
+    proTip: string;
+    brand1: string;
+    important: string;
+    helps: string;
+    include: string;
+    proof: string;
+    name: string;
+    brand2: string;
+    model: string;
+    serial: string;
+    purchase: string;
+    detail: string;
+    photos: string;
+    save: string;
+};
+
+export function ItemForm({ initialItem, labels }: { initialItem: Item; labels: ClientLabels }) {
   const [formData, setFormData] = useState({
     name: initialItem.name,
     brand: initialItem.brand || "",
@@ -31,23 +51,21 @@ export function ItemForm({ initialItem }: { initialItem: Item }) {
         }),
       });
 
-      if (!res.ok) throw new Error("Failed to update item");
+      if (!res.ok) throw new Error(labels.update1);
 
       router.push("/items");
       router.refresh();
     } catch (error) {
-      console.error("Error:", error);
-      alert("Failed to update item. Please try again.");
+      console.error(labels.error, error);
+      alert(labels.update2);
     }
   };
 
   return (
     <div className="max-w-2xl mx-auto p-6">
       <div className="bg-orange-50 border-l-4 border-orange-400 p-4 mb-6">
-        <p className="text-orange-700">
-          💡 Pro Tip: Adding detailed information helps ensure fair replacement
-          value from insurance companies. Without specifics, they may default to
-          lowest-cost replacements.
+        <p className="whitespace-pre-line text-orange-700">
+          {labels.proTip}
         </p>
       </div>
 
@@ -57,7 +75,7 @@ export function ItemForm({ initialItem }: { initialItem: Item }) {
             htmlFor="name"
             className="block text-sm font-medium text-gray-700"
           >
-            Name *
+            {labels.name}
           </label>
           <input
             type="text"
@@ -74,7 +92,7 @@ export function ItemForm({ initialItem }: { initialItem: Item }) {
             htmlFor="brand"
             className="block text-sm font-medium text-gray-700"
           >
-            Brand
+            {labels.brand2}
           </label>
           <input
             type="text"
@@ -86,7 +104,7 @@ export function ItemForm({ initialItem }: { initialItem: Item }) {
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
           />
           <p className="mt-1 text-sm text-gray-500">
-            Specifying brand name helps ensure like-quality replacement
+            {labels.brand1}
           </p>
         </div>
 
@@ -95,7 +113,7 @@ export function ItemForm({ initialItem }: { initialItem: Item }) {
             htmlFor="modelNumber"
             className="block text-sm font-medium text-gray-700"
           >
-            Model Number
+            {labels.model}
           </label>
           <input
             type="text"
@@ -113,7 +131,7 @@ export function ItemForm({ initialItem }: { initialItem: Item }) {
             htmlFor="serialNumber"
             className="block text-sm font-medium text-gray-700"
           >
-            Serial Number
+            {labels.serial}
           </label>
           <input
             type="text"
@@ -125,7 +143,7 @@ export function ItemForm({ initialItem }: { initialItem: Item }) {
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
           />
           <p className="mt-1 text-sm text-gray-500">
-            Important for electronics and high-value items
+            {labels.important}
           </p>
         </div>
 
@@ -134,7 +152,7 @@ export function ItemForm({ initialItem }: { initialItem: Item }) {
             htmlFor="value"
             className="block text-sm font-medium text-gray-700"
           >
-            Purchase Price
+            {labels.purchase}
           </label>
           <input
             type="number"
@@ -149,7 +167,7 @@ export function ItemForm({ initialItem }: { initialItem: Item }) {
             step="0.01"
           />
           <p className="mt-1 text-sm text-gray-500">
-            Helps establish item value for insurance claims
+            {labels.helps}
           </p>
         </div>
 
@@ -158,7 +176,7 @@ export function ItemForm({ initialItem }: { initialItem: Item }) {
             htmlFor="description"
             className="block text-sm font-medium text-gray-700"
           >
-            Detailed Description
+            {labels.detail}
           </label>
           <textarea
             id="description"
@@ -170,13 +188,13 @@ export function ItemForm({ initialItem }: { initialItem: Item }) {
             rows={3}
           />
           <p className="mt-1 text-sm text-gray-500">
-            Include specific features, materials, and condition
+            {labels.include}
           </p>
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700">
-            Add Photos
+            {labels.photos}
           </label>
           <input
             type="file"
@@ -185,7 +203,7 @@ export function ItemForm({ initialItem }: { initialItem: Item }) {
             accept="image/*"
           />
           <p className="mt-1 text-sm text-gray-500">
-            Visual proof of ownership and condition
+            {labels.proof}
           </p>
         </div>
 
@@ -194,7 +212,7 @@ export function ItemForm({ initialItem }: { initialItem: Item }) {
             type="submit"
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
           >
-            Save Changes
+            {labels.save}
           </button>
         </div>
       </form>

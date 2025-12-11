@@ -2,12 +2,13 @@ import { getServerSession } from "next-auth";
 import { OPTIONS } from "@/app/api/auth/[...nextauth]/route";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { t } from "../../../i18n";
 
 export async function POST(req: Request) {
   const session = await getServerSession(OPTIONS);
 
   if (!session?.user?.email) {
-    return new NextResponse("Unauthorized", { status: 401 });
+    return new NextResponse(t("items.handlers.unauthorized"), { status: 401 });
   }
 
   const { name } = await req.json();
@@ -17,7 +18,7 @@ export async function POST(req: Request) {
   });
 
   if (!user) {
-    return new NextResponse("User not found", { status: 404 });
+    return new NextResponse(t("pdf.handlers.user"), { status: 404 });
   }
 
   const room = await prisma.room.create({
@@ -39,7 +40,7 @@ export async function PUT(req: Request) {
   const session = await getServerSession(OPTIONS);
 
   if (!session?.user?.email) {
-    return new NextResponse("Unauthorized", { status: 401 });
+    return new NextResponse(t("items.handlers.unauthorized"), { status: 401 });
   }
 
   const { id, name } = await req.json();
@@ -49,7 +50,7 @@ export async function PUT(req: Request) {
   });
 
   if (!user) {
-    return new NextResponse("User not found", { status: 404 });
+    return new NextResponse(t("pdf.handlers.user"), { status: 404 });
   }
 
   const room = await prisma.room.update({

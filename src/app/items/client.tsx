@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { t } from "../../i18n";
 
 interface Item {
      id: string;
@@ -21,14 +20,26 @@ interface Item {
      updatedAt: Date;
 }
 
-export function AllItemsClient({ items }: { items: Item[] }) {
+type ClientLabels = {
+     allItems: string;
+     totalValue: string;
+     generate: string;
+     addBrand: string;
+     addModel: string;
+     addSerial: string;
+     generate1: string;
+     generate2: string;
+     generate3: string;
+};
+
+export function AllItemsClient({ items, labels }: { items: Item[]; labels: ClientLabels }) {
      const [itemsState, setItems] = useState(items);
      const totalValue = items.reduce((sum, item) => sum + item.value, 0);
 
      const handleGeneratePDF = async () => {
           try {
                const response = await fetch("/api/pdf");
-               if (!response.ok) throw new Error("Failed to generate PDF");
+               if (!response.ok) throw new Error(labels.generate1);
 
                // Create a blob from the PDF stream
                const blob = await response.blob();
@@ -47,8 +58,8 @@ export function AllItemsClient({ items }: { items: Item[] }) {
                document.body.removeChild(link);
                window.URL.revokeObjectURL(url);
           } catch (error) {
-               console.error("Error generating PDF:", error);
-               alert("Failed to generate PDF. Please try again.");
+               console.error(labels.generate2, error);
+               alert(labels.generate3);
           }
      };
 
@@ -57,18 +68,18 @@ export function AllItemsClient({ items }: { items: Item[] }) {
                <div className="px-4 py-6 sm:px-0">
                     <div className="flex justify-between items-center mb-6">
                          <h1 className="text-2xl font-semibold">
-                              {t("itemsClient.headers.allItems")}
+                              {labels.allItems}
                          </h1>
                          <div className="flex items-center gap-4">
                               <div className="text-lg font-medium">
-                                   {t("itemsClient.div.totalValue")}{" "}
+                                   {labels.totalValue}{" "}
                                    {totalValue.toLocaleString()}
                               </div>
                               <button
                                    onClick={handleGeneratePDF}
                                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                               >
-                                   {t("itemsClient.buttons.generate")}
+                                   {labels.generate}
                               </button>
                          </div>
                     </div>
@@ -113,9 +124,7 @@ export function AllItemsClient({ items }: { items: Item[] }) {
                                                        href={`/items/${item.id}`}
                                                        className="text-gray-400 hover:text-blue-600 block"
                                                   >
-                                                       {t(
-                                                            "itemsClient.link.addBrand"
-                                                       )}
+                                                       {labels.addBrand}
                                                   </Link>
                                              )}
                                              {!item.modelNumber && (
@@ -123,9 +132,7 @@ export function AllItemsClient({ items }: { items: Item[] }) {
                                                        href={`/items/${item.id}`}
                                                        className="text-gray-400 hover:text-blue-600 block"
                                                   >
-                                                       {t(
-                                                            "itemsClient.link.addModel"
-                                                       )}
+                                                       {labels.addModel}
                                                   </Link>
                                              )}
                                              {!item.serialNumber && (
@@ -133,9 +140,7 @@ export function AllItemsClient({ items }: { items: Item[] }) {
                                                        href={`/items/${item.id}`}
                                                        className="text-gray-400 hover:text-blue-600 block"
                                                   >
-                                                       {t(
-                                                            "itemsClient.link.addSerial"
-                                                       )}
+                                                       {labels.addSerial}
                                                   </Link>
                                              )}
                                         </div>

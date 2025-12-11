@@ -62,23 +62,6 @@
           }
      },
 
-     "itemsClient": {
-          "headers": {
-               "allItems": "Todos los Artículos"
-          },
-          "div": {
-               "totalValue": "Valor Total: $"
-          },
-          "buttons": {
-               "generate": "Generar PDF"
-          },
-          "link": {
-               "addBrand": "+ Agregar marca",
-               "addModel": "+ Agregar número de modelo",
-               "addSerial": "+ Agregar número de serie"
-          }
-     },
-
      "privacy": {
           "headers": {
                "privacy": "Política de Privacidad",
@@ -261,5 +244,87 @@
                "addRooms": "Agrega habitaciones y artículos fácilmente con nuestro proceso guiado.",
                "report": "Crea un reporte PDF completo para tu reclamo de seguro."
           }
+     },
+
+     "itemsClient": {
+          "headers": {
+               "allItems": "Todos los Artículos"
+          },
+          "div": {
+               "totalValue": "Valor Total: $"
+          },
+          "buttons": {
+               "generate": "Generar PDF"
+          },
+          "link": {
+               "addBrand": "+ Agregar marca",
+               "addModel": "+ Agregar número de modelo",
+               "addSerial": "+ Agregar número de serie"
+          },
+          "handlers": {
+               "generate1": "No se pudo generar el PDF",
+               "generate2": "Error al generar el PDF:",
+               "generate3": "No se pudo generar el PDF. Por favor, inténtalo de nuevo."
+          }
+     },
+
+     "items": {
+          "handlers": {
+               "delete1": "Error al eliminar:",
+               "delete2": "No se pudo eliminar el artículo",
+               "unauthorized": "No autorizado",
+               "error": "Error al actualizar el artículo",
+               "room": "Habitación no encontrada",
+               "item": "Artículo no encontrado"
+          }
+     },
+
+     "pdf": {
+          "handlers": {
+               "user": "Usuario no encontrado",
+               "generate1": "Error al generar el PDF:",
+               "generate2": "No se pudo generar el PDF"
+          },
+          "text": {
+               "home": "Informe de Inventario del Hogar",
+               "item": "Artículo",
+               "value": "Valor"
+          }
+     },
+
+     "user": {
+          "handlers": {
+               "update": "Error al actualizar usuario",
+               "delete": "Error al eliminar usuario"
+          }
+     },
+
+     "itemForm": {
+          "handlers": {
+               "update1": "No se pudo actualizar el artículo",
+               "update2": "No se pudo actualizar el artículo. Por favor, inténtalo de nuevo.",
+               "error": "Error: "
+          },
+          "paragraphs": {
+               "proTip": "💡 Consejo: Agregar información detallada ayuda a garantizar un valor de reemplazo justo\npor parte de las compañías de seguros. Sin detalles, pueden asumir\nreemplazos de menor costo.",
+               "brand": "Especificar la marca ayuda a garantizar un reemplazo de calidad similar",
+               "important": "Importante para electrónicos y artículos de alto valor",
+               "helps": "Ayuda a establecer el valor del artículo para reclamos de seguro",
+               "include": "Incluye características específicas, materiales y condición",
+               "proof": "Prueba visual de propiedad y condición"
+          },
+          "label": {
+               "name": "Nombre *",
+               "brand": "Marca",
+               "model": "Número de Modelo",
+               "serial": "Número de Serie",
+               "purchase": "Precio de compra",
+               "detail": "Descripción Detallada",
+               "photos": "Agregar Fotos"
+          },
+          "buttons": {
+               "save": "Guardar Cambios"
+          }
      }
 }
+

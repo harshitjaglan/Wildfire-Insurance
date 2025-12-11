@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { OPTIONS } from "../../auth/[...nextauth]/route";
+import { t } from "../../../../i18n";
 
 export async function DELETE(
   request: Request,
@@ -16,9 +17,9 @@ export async function DELETE(
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Delete error:", error);
+    console.error(t("items.handlers.delete1"), error);
     return NextResponse.json(
-      { error: "Failed to delete item" },
+      { error: t("items.handlers.delete2") },
       { status: 500 }
     );
   }
@@ -31,7 +32,7 @@ export async function PUT(
   try {
     const session = await getServerSession(OPTIONS);
     if (!session?.user?.email) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse(t("items.handlers.unauthorized"), { status: 401 });
     }
 
     const json = await request.json();
@@ -57,6 +58,6 @@ export async function PUT(
     return NextResponse.json(item);
   } catch (error) {
     console.error("Error:", error);
-    return new NextResponse("Error updating item", { status: 500 });
+    return new NextResponse(t("items.handlers.error"), { status: 500 });
   }
 }

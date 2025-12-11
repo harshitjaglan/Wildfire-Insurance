@@ -62,23 +62,6 @@
           }
      },
 
-     "itemsClient": {
-          "headers": {
-               "allItems": "All Items"
-          },
-          "div": {
-               "totalValue": "Total Value: $"
-          },
-          "buttons": {
-               "generate": "Generate PDF"
-          },
-          "link": {
-               "addBrand": "+ Add brand",
-               "addModel": "+ Add model number",
-               "addSerial": "+ Add serial number"
-          }
-     },
-
      "privacy": {
           "headers": {
                "privacy": "Privacy Policy",
@@ -260,6 +243,87 @@
                "account": "Create your account and set up your profile.",
                "addRooms": "Easily add rooms and items with our guided process.",
                "report": "Create a comprehensive PDF report for your insurance claim."
+          }
+     },
+
+     "itemsClient": {
+          "headers": {
+               "allItems": "All Items"
+          },
+          "div": {
+               "totalValue": "Total Value: $"
+          },
+          "buttons": {
+               "generate": "Generate PDF"
+          },
+          "link": {
+               "addBrand": "+ Add brand",
+               "addModel": "+ Add model number",
+               "addSerial": "+ Add serial number"
+          },
+          "handlers": {
+               "generate1": "Failed to generate PDF",
+               "generate2": "Error generating PDF:",
+               "generate3": "Failed to generate PDF. Please try again."
+          }
+     },
+
+     "items": {
+          "handlers": {
+               "delete1": "Delete error:",
+               "delete2": "Failed to delete item",
+               "unauthorized": "Unauthorized",
+               "error": "Error updating item",
+               "room": "Room not found",
+               "item": "Item not found"
+          }
+     },
+
+     "pdf": {
+          "handlers": {
+               "user": "User not found",
+               "generate1": "PDF generation error:",
+               "generate2": "Failed to generate PDF"
+          },
+          "text": {
+               "home": "Home Inventory Report",
+               "item": "Item",
+               "value": "Value"
+          }
+     },
+
+     "user": {
+          "handlers": {
+               "update": "Error updating user",
+               "delete": "Error deleting user"
+          }
+     },
+     
+     "itemForm": {
+          "handlers": {
+               "update1": "Failed to update item",
+               "update2": "Failed to update item. Please try again",
+               "error": "Error: "
+          },
+          "paragraphs": {
+               "proTip": "💡 Pro Tip: Adding detailed information helps ensure fair replacement\nvalue from insurance companies. Without specifics, they may default to\nlowest-cost replacements.",
+               "brand": "Specifying brand name helps ensure like-quality replacement",
+               "important": "Important for electronics and high-value items",
+               "helps": "Helps establish item value for insurace claims",
+               "include": "Include specific features, materials, and condition",
+               "proof": "Visual proof of ownership and condition"
+          },
+          "label": {
+               "name": "Name *",
+               "brand": "Brand",
+               "model": "Model Number",
+               "serial": "Serial Number",
+               "purchase": "Purchase price",
+               "detail": "Detailed Description",
+               "photos": "Add Photos"
+          },
+          "buttons": {
+               "save": "Save Changes"
           }
      }
 }
