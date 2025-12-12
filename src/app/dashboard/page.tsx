@@ -129,7 +129,7 @@ export default async function DashboardPage() {
                                              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition-colors"
                                         >
                                              <FaHome className="mr-2" />{" "}
-                                             {t("dashboard.link.firstHome")}
+                                             {t("dashboard.link.firstRoom")}
                                         </Link>
                                    </div>
                               ) : (
