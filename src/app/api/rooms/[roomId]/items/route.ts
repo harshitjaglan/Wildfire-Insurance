@@ -24,16 +24,17 @@ export async function POST(
     return new NextResponse(t("pdf.handlers.user"), { status: 404 });
   }
 
-  // Verify room belongs to user
-  const room = await prisma.room.findUnique({
+  // Verify user has access to room (OWNER or EDITOR can add items)
+  const membership = await prisma.roomMembership.findFirst({
     where: {
-      id: params.roomId,
+      roomId: params.roomId,
       userId: user.id,
+      role: { in: ["OWNER", "EDITOR"] },
     },
   });
 
-  if (!room) {
-    return new NextResponse(t("items.handlers.room"), { status: 404 });
+  if (!membership) {
+    return new NextResponse(t("items.handlers.room"), { status: 403 });
   }
 
   const item = await prisma.item.create({
@@ -67,22 +68,28 @@ export async function DELETE(
     return new NextResponse(t("pdf.handlers.user"), { status: 404 });
   }
 
-  // Verify room and item belong to user
-  const room = await prisma.room.findUnique({
+  // Verify user has access to room (OWNER or EDITOR can delete items)
+  const membership = await prisma.roomMembership.findFirst({
     where: {
-      id: params.roomId,
+      roomId: params.roomId,
       userId: user.id,
-    },
-    include: {
-      items: {
-        where: {
-          id: params.itemId,
-        },
-      },
+      role: { in: ["OWNER", "EDITOR"] },
     },
   });
 
-  if (!room || room.items.length === 0) {
+  if (!membership) {
+    return new NextResponse(t("items.handlers.room"), { status: 403 });
+  }
+
+  // Verify item exists in this room
+  const item = await prisma.item.findFirst({
+    where: {
+      id: params.itemId,
+      roomId: params.roomId,
+    },
+  });
+
+  if (!item) {
     return new NextResponse(t("items.handlers.item"), { status: 404 });
   }
 

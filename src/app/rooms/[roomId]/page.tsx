@@ -24,13 +24,17 @@ export default async function RoomItemsPage({
     redirect("/");
   }
 
-  const room = await prisma.room.findUnique({
+  const membership = await prisma.roomMembership.findFirst({
     where: {
-      id: roomId,
+      roomId,
       userId: user.id,
     },
     include: {
-      items: true,
+      room: {
+        include: {
+          items: true,
+        },
+      },
     },
   });
 
@@ -52,9 +56,9 @@ export default async function RoomItemsPage({
       delete4: t("roomIdClient.buttons.delete"),
   };
 
-  if (!room) {
+  if (!membership) {
     redirect("/rooms");
   }
 
-  return <RoomClient room={room} labels={ClientLabels} />;
+  return <RoomClient room={membership.room} userId={user.id} labels={ClientLabels} />;
 }

@@ -9,6 +9,43 @@ export async function DELETE(
   { params }: { params: { itemId: string } }
 ) {
   try {
+    const session = await getServerSession(OPTIONS);
+
+    if (!session?.user?.email) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    const user = await prisma.user.findUnique({
+      where: { email: session.user.email },
+    });
+
+    if (!user) {
+      return new NextResponse("User not found", { status: 404 });
+    }
+
+    // Get item and check membership
+    const item = await prisma.item.findUnique({
+      where: { id: params.itemId },
+      include: { room: true },
+    });
+
+    if (!item) {
+      return new NextResponse("Item not found", { status: 404 });
+    }
+
+    // Check if user has OWNER or EDITOR access to the room
+    const membership = await prisma.roomMembership.findFirst({
+      where: {
+        roomId: item.roomId,
+        userId: user.id,
+        role: { in: ["OWNER", "EDITOR"] },
+      },
+    });
+
+    if (!membership) {
+      return new NextResponse("Forbidden", { status: 403 });
+    }
+
     await prisma.item.delete({
       where: {
         id: params.itemId,
@@ -35,15 +72,43 @@ export async function PUT(
       return new NextResponse(t("items.handlers.unauthorized"), { status: 401 });
     }
 
+    const user = await prisma.user.findUnique({
+      where: { email: session.user.email },
+    });
+
+    if (!user) {
+      return new NextResponse("User not found", { status: 404 });
+    }
+
+    // Get item and check membership
+    const existingItem = await prisma.item.findUnique({
+      where: { id: params.itemId },
+      include: { room: true },
+    });
+
+    if (!existingItem) {
+      return new NextResponse("Item not found", { status: 404 });
+    }
+
+    // Check if user has OWNER or EDITOR access to the room
+    const membership = await prisma.roomMembership.findFirst({
+      where: {
+        roomId: existingItem.roomId,
+        userId: user.id,
+        role: { in: ["OWNER", "EDITOR"] },
+      },
+    });
+
+    if (!membership) {
+      return new NextResponse("Forbidden", { status: 403 });
+    }
+
     const json = await request.json();
     const { name, brand, modelNumber, serialNumber, value, description } = json;
 
     const item = await prisma.item.update({
       where: {
         id: params.itemId,
-        userId: (
-          await prisma.user.findUnique({ where: { email: session.user.email } })
-        )?.id,
       },
       data: {
         name,
