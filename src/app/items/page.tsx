@@ -32,12 +32,17 @@ export default async function AllItemsPage() {
     redirect("/");
   }
 
-  // Get all items across all rooms
+  // Get all items across all rooms the user has access to
+  const memberships = await prisma.roomMembership.findMany({
+    where: { userId: user.id },
+    select: { roomId: true },
+  });
+
+  const roomIds = memberships.map((m) => m.roomId);
+
   const items = await prisma.item.findMany({
     where: {
-      room: {
-        userId: user.id,
-      },
+      roomId: { in: roomIds },
     },
     include: {
       room: true,
