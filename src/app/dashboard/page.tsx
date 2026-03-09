@@ -47,8 +47,16 @@ export default async function DashboardPage() {
           where: {
                email: session.user.email,
           },
+     });
+
+     if (!user) {
+          return null;
+     }
+
+     const memberships = await prisma.roomMembership.findMany({
+          where: { userId: user.id },
           include: {
-               rooms: {
+               room: {
                     include: {
                          items: true,
                     },
@@ -56,16 +64,14 @@ export default async function DashboardPage() {
           },
      });
 
-     if (!user) {
-          return null;
-     }
+     const rooms = memberships.map((m) => m.room);
 
-     const roomCount = user.rooms.length;
-     const itemCount = user.rooms.reduce(
+     const roomCount = rooms.length;
+     const itemCount = rooms.reduce(
           (sum, room) => sum + room.items.length,
           0
      );
-     const totalValue = user.rooms.reduce(
+     const totalValue = rooms.reduce(
           (sum, room) =>
                sum +
                room.items.reduce((roomSum, item) => roomSum + item.value, 0),
