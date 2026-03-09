@@ -215,7 +215,7 @@ export function CollaboratorsSection({
 
             <div className="flex items-center gap-3">
               {/* Role Badge/Selector */}
-              {isOwner && collaborator.userId !== currentUserId ? (
+              {isOwner ? (
                 <select
                   value={collaborator.role}
                   onChange={(e) =>
