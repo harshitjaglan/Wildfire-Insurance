@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Users, UserPlus, X, Crown, Edit, Eye, Trash2 } from "lucide-react";
+import { Users, UserPlus, X, Crown, Pencil, Eye, Trash2 } from "lucide-react";
 
 interface Collaborator {
   id: string;
@@ -89,6 +89,23 @@ export function CollaboratorsSection({
   };
 
   const handleRoleChange = async (userId: string, newRole: string) => {
+    const isSelf = userId === currentUserId;
+    const oldCollaborators = collaborators;
+
+    // Warn if demoting yourself
+    if (isSelf && newRole !== "OWNER") {
+      if (!confirm("You are changing your own role. You will lose owner privileges. Continue?")) {
+        return;
+      }
+    }
+
+    // Optimistic update
+    setCollaborators(
+      collaborators.map((c) =>
+        c.userId === userId ? { ...c, role: newRole as "OWNER" | "EDITOR" | "VIEWER" } : c
+      )
+    );
+
     try {
       const res = await fetch(
         `/api/rooms/${roomId}/collaborators/${userId}`,
@@ -99,16 +116,15 @@ export function CollaboratorsSection({
         }
       );
 
-      if (res.ok) {
-        const updated = await res.json();
-        setCollaborators(
-          collaborators.map((c) => (c.userId === userId ? updated : c))
-        );
-      } else {
+      if (!res.ok) {
+        // Revert on failure
+        setCollaborators(oldCollaborators);
         const errorText = await res.text();
         alert(errorText || "Failed to update role");
       }
     } catch (error) {
+      // Revert on failure
+      setCollaborators(oldCollaborators);
       alert("Failed to update role");
     }
   };
@@ -146,7 +162,7 @@ export function CollaboratorsSection({
       case "OWNER":
         return <Crown className="h-4 w-4 text-yellow-500" />;
       case "EDITOR":
-        return <Edit className="h-4 w-4 text-blue-500" />;
+        return <Pencil className="h-4 w-4 text-blue-500" />;
       case "VIEWER":
         return <Eye className="h-4 w-4 text-gray-500" />;
       default:
@@ -216,17 +232,20 @@ export function CollaboratorsSection({
             <div className="flex items-center gap-3">
               {/* Role Badge/Selector */}
               {isOwner ? (
-                <select
-                  value={collaborator.role}
-                  onChange={(e) =>
-                    handleRoleChange(collaborator.userId, e.target.value)
-                  }
-                  className="px-3 py-1 rounded-full text-sm font-medium border-0 focus:ring-2 focus:ring-indigo-500"
-                >
-                  <option value="OWNER">Owner</option>
-                  <option value="EDITOR">Editor</option>
-                  <option value="VIEWER">Viewer</option>
-                </select>
+                <div className={`flex items-center gap-1.5 rounded-full pr-1 ${getRoleBadgeColor(collaborator.role)}`}>
+                  {getRoleIcon(collaborator.role)}
+                  <select
+                    value={collaborator.role}
+                    onChange={(e) =>
+                      handleRoleChange(collaborator.userId, e.target.value)
+                    }
+                    className="bg-transparent px-1 py-1 text-sm font-medium border-0 focus:ring-2 focus:ring-indigo-500 cursor-pointer"
+                  >
+                    <option value="OWNER">Owner</option>
+                    <option value="EDITOR">Editor</option>
+                    <option value="VIEWER">Viewer</option>
+                  </select>
+                </div>
               ) : (
                 <div
                   className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium ${getRoleBadgeColor(
